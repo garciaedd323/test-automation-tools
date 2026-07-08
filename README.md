@@ -100,7 +100,8 @@ graph TD
 
 ### `docs/conceptos-generales/`
 - [Testing manual vs automatizado](./docs/conceptos-generales/testing-manual-vs-automatizado.md) — definiciones, tabla comparativa, cuándo automatizar y cuándo no, diagrama de decisión.
-- [Pirámide de testing](./docs/conceptos-generales/piramide-de-testing.md) — origen (Mike Cohn), cada capa explicada, errores comunes, variante "testing trophy".
+- [Pirámide de testing](./docs/conceptos-generales/piramide-de-testing.md) — origen (Mike Cohn), cada capa explicada, errores comunes, variante "testing trophy", ejemplos aplicados (web y móvil).
+- [Tipos de pruebas](./docs/conceptos-generales/tipos-de-pruebas.md) — funcionales vs no funcionales, mapa completo con analogías cotidianas, tabla resumen, relación con la pirámide de testing.
 
 ### `docs/comparativas/`
 _(Pendiente)_
@@ -144,7 +145,7 @@ _(Pendiente)_
 
 ## 🗺 Roadmap
 
-- [ ] Completar `docs/conceptos-generales` (fundamentos de testing y automatización) — 2/8 notas agregadas
+- [ ] Completar `docs/conceptos-generales` (fundamentos de testing y automatización) — 3/8 notas agregadas
 - [ ] Selenium: setup + primeros scripts
 - [ ] Appium: setup + primer test móvil
 - [ ] Cypress: setup + primer test E2E
