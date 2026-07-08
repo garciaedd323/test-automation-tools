@@ -104,6 +104,8 @@ graph TD
 - [Tipos de pruebas](./docs/conceptos-generales/tipos-de-pruebas.md) — funcionales vs no funcionales, mapa completo con analogías cotidianas, tabla resumen, relación con la pirámide de testing.
 - [Patrones de diseño](./docs/conceptos-generales/patrones-de-diseno.md) — Page Object Model, Page Factory y Screenplay Pattern, con ejemplos de código, comparación y guía de cuándo elegir cada uno.
 - [Estrategia de automatización](./docs/conceptos-generales/estrategia-de-automatizacion.md) — criterios de priorización, matriz impacto/frecuencia, cálculo de ROI, mantenibilidad y proceso práctico para decidir qué automatizar primero.
+- [Buenas prácticas generales](./docs/conceptos-generales/buenas-practicas-generales.md) — naming de tests, independencia entre pruebas, datos de prueba, cómo evitar flaky tests, esperas explícitas vs. implícitas.
+- [Glosario](./docs/conceptos-generales/glosario.md) — ~100 términos de testing y automatización, ordenados alfabéticamente, con referencias cruzadas al resto de las notas.
 
 ### `docs/comparativas/`
 _(Pendiente)_
@@ -147,7 +149,7 @@ _(Pendiente)_
 
 ## 🗺 Roadmap
 
-- [ ] Completar `docs/conceptos-generales` (fundamentos de testing y automatización) — 5/8 notas agregadas
+- [ ] Completar `docs/conceptos-generales` (fundamentos de testing y automatización) — 7/8 notas agregadas
 - [ ] Selenium: setup + primeros scripts
 - [ ] Appium: setup + primer test móvil
 - [ ] Cypress: setup + primer test E2E
