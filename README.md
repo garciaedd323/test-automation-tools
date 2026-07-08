@@ -103,6 +103,7 @@ graph TD
 - [Pirámide de testing](./docs/conceptos-generales/piramide-de-testing.md) — origen (Mike Cohn), cada capa explicada, errores comunes, variante "testing trophy", ejemplos aplicados (web y móvil).
 - [Tipos de pruebas](./docs/conceptos-generales/tipos-de-pruebas.md) — funcionales vs no funcionales, mapa completo con analogías cotidianas, tabla resumen, relación con la pirámide de testing.
 - [Patrones de diseño](./docs/conceptos-generales/patrones-de-diseno.md) — Page Object Model, Page Factory y Screenplay Pattern, con ejemplos de código, comparación y guía de cuándo elegir cada uno.
+- [Estrategia de automatización](./docs/conceptos-generales/estrategia-de-automatizacion.md) — criterios de priorización, matriz impacto/frecuencia, cálculo de ROI, mantenibilidad y proceso práctico para decidir qué automatizar primero.
 
 ### `docs/comparativas/`
 _(Pendiente)_
@@ -146,7 +147,7 @@ _(Pendiente)_
 
 ## 🗺 Roadmap
 
-- [ ] Completar `docs/conceptos-generales` (fundamentos de testing y automatización) — 4/8 notas agregadas
+- [ ] Completar `docs/conceptos-generales` (fundamentos de testing y automatización) — 5/8 notas agregadas
 - [ ] Selenium: setup + primeros scripts
 - [ ] Appium: setup + primer test móvil
 - [ ] Cypress: setup + primer test E2E
