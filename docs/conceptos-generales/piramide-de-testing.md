@@ -84,6 +84,72 @@ Es una crítica interesante a la pirámide clásica, aunque no todos los equipos
 
 ---
 
+## Ejemplos aplicados
+
+Aplicando la pirámide a dos casos concretos: una app web (frontend + backend) y una app móvil.
+
+### Caso 1: App web (ej. tienda online con React + Node/Express + PostgreSQL)
+
+**Unitarias** *(base, la mayoría — apuntar a cientos de tests)*
+- Backend: función que calcula el descuento de un cupón, validación de un email, cálculo de impuestos según región.
+- Frontend: un componente que formatea precios, un hook que valida un formulario, una función que ordena una lista de productos.
+- Herramientas: Jest/Vitest (frontend), Jest/Mocha (Node), pytest (si el backend es Python).
+
+**Integración** *(capa media)*
+- ¿El endpoint `POST /orders` guarda correctamente en la base de datos y descuenta stock?
+- ¿El componente `CarritoDeCompras` se actualiza bien cuando llega una respuesta real de la API (mockeada a nivel de red, no de lógica)?
+- ¿La integración con la pasarela de pago (Stripe, MercadoPago) responde como se espera ante un pago exitoso o rechazado?
+- Herramientas: Supertest (Node), Testing Library + MSW (frontend), contenedores Docker con base de datos real para tests de backend.
+
+**End-to-end** *(pocas, solo flujos críticos de negocio)*
+- Flujo completo: usuario busca un producto → lo agrega al carrito → hace checkout → recibe confirmación.
+- Login y registro.
+- Recuperación de contraseña.
+- No automatices cada variante de producto o cada filtro de búsqueda en E2E — eso ya lo cubrieron las unitarias e integración.
+- Herramientas: Playwright o Cypress.
+
+**Manual / exploratorio**
+- Probar la experiencia de checkout en distintos navegadores y resoluciones.
+- Evaluar si el mensaje de error cuando falla un pago es claro y no genera pánico en el usuario.
+- Exploración libre después de cada release grande, buscando bugs inesperados.
+
+### Caso 2: App móvil (ej. app de delivery en React Native o Swift/Kotlin nativo)
+
+**Unitarias**
+- Función que calcula el tiempo estimado de entrega.
+- Validación de formato de dirección o número de teléfono.
+- Lógica de un ViewModel/Presenter que decide qué mostrar según el estado del pedido.
+- Herramientas: Jest (React Native), XCTest (iOS), JUnit (Android).
+
+**Integración**
+- ¿La app maneja bien la respuesta del backend cuando el pedido cambia de estado (push notification o polling)?
+- ¿La geolocalización se combina bien con el mapa para mostrar la ubicación del repartidor?
+- ¿El módulo de pagos in-app se comunica correctamente con el SDK de pago?
+- Herramientas: Detox (React Native), tests de integración nativos con mocks de servicios.
+
+**End-to-end** *(las más delicadas en móvil — dispositivos reales o emuladores)*
+- Flujo: abrir app → buscar restaurante → hacer pedido → seguir el pedido en el mapa.
+- Login con biometría o social login.
+- En móvil, las E2E son especialmente costosas porque hay que probar en múltiples dispositivos y versiones de OS (la fragmentación de Android es un dolor de cabeza clásico). Por eso aquí la disciplina de "pocas y estratégicas" importa aún más que en web.
+- Herramientas: Appium, Detox, Maestro (cada vez más popular por ser más simple).
+
+**Manual / exploratorio**
+- Probar en dispositivos físicos de gama baja (no todo el mundo tiene el último iPhone).
+- Evaluar comportamiento con mala conexión (3G, modo avión intermitente) — algo muy difícil de automatizar bien.
+- Revisar que los gestos táctiles (swipe, long press) se sientan naturales.
+- Probar interrupciones del sistema: llamada entrante mientras usas la app, notificaciones, cambio de app en background.
+
+### Lo que cambia entre web y móvil
+
+| Aspecto | Web | Móvil |
+|---|---|---|
+| Costo de E2E | Alto pero manejable | Muy alto (fragmentación de dispositivos/OS) |
+| Testing manual | UX general, cross-browser | Gestos, interrupciones del sistema, batería/red |
+| CI/CD | Rápido de integrar | Más lento (builds nativos, emuladores) |
+| Herramienta E2E típica | Playwright/Cypress | Detox/Appium/Maestro |
+
+---
+
 ## Referencias
 - Mike Cohn, *Succeeding with Agile* (2009)
 - Kent C. Dodds, "The Testing Trophy"
