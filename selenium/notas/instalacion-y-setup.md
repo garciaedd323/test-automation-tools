@@ -1,5 +1,22 @@
 # Instalación y Setup de Selenium
 
+## 0. Prerrequisitos
+
+Antes de instalar Selenium, necesitas tener listo el entorno base según el lenguaje que vayas a usar:
+
+**Para Python:**
+- Python **3.8 o superior** instalado (recomendado 3.10+).
+- Verificar con: `python --version` o `python3 --version`
+- `pip` ya viene incluido con Python en instalaciones modernas.
+
+**Para Java:**
+- JDK (Java Development Kit) **8 o superior** instalado (recomendado 11+).
+- Verificar con: `java -version` y `javac -version`
+- Un gestor de dependencias: Maven o Gradle instalado y configurado.
+
+**Para ambos:**
+- Al menos un navegador instalado en el sistema (Chrome, Firefox, Edge). Selenium Manager gestiona el **driver**, pero **no instala el navegador en sí** — eso sigue siendo un paso manual, como instalar cualquier otra aplicación de escritorio.
+
 ## 1. Instalación básica con pip (Python)
 
 Para instalar Selenium en Python, es tan simple como:
@@ -14,6 +31,26 @@ Para verificar la versión instalada:
 ```bash
 pip show selenium
 ```
+
+### Buena práctica: usar un entorno virtual (`venv`)
+
+Antes de instalar Selenium, es recomendable crear un **entorno virtual** para aislar las dependencias de este proyecto y no mezclarlas con otros proyectos de Python en tu máquina:
+
+```bash
+# Crear el entorno virtual
+python -m venv venv
+
+# Activarlo (Windows)
+venv\Scripts\activate
+
+# Activarlo (macOS/Linux)
+source venv/bin/activate
+
+# Ahora sí, instalar Selenium dentro del entorno ya activado
+pip install selenium
+```
+
+Sabrás que el entorno está activo porque verás `(venv)` al inicio de la línea de comandos. Para salir del entorno: `deactivate`.
 
 ## 1.1 Instalación en Java (con Maven)
 
@@ -153,6 +190,141 @@ public class Main {
 ```
 
 Con Selenium 4.6+, **estas librerías ya casi no son necesarias** para casos básicos, porque Selenium Manager cumple la misma función de forma nativa. Siguen siendo útiles en casos avanzados (versiones muy específicas, entornos corporativos con reglas particulares), pero para el 90% de los casos ya no hace falta.
+
+## 4. Verificar que la instalación funcionó (smoke test)
+
+Antes de escribir un script completo, conviene correr una prueba mínima para confirmar que Selenium, el navegador y el driver están bien configurados entre sí.
+
+**Python:**
+```python
+from selenium import webdriver
+
+driver = webdriver.Chrome()
+driver.get("https://www.selenium.dev")
+print("Título de la página:", driver.title)
+driver.quit()
+```
+
+**Java:**
+```java
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+
+public class SmokeTest {
+    public static void main(String[] args) {
+        WebDriver driver = new ChromeDriver();
+        driver.get("https://www.selenium.dev");
+        System.out.println("Título de la página: " + driver.getTitle());
+        driver.quit();
+    }
+}
+```
+
+Si se abre el navegador, navega a la página y se imprime el título sin errores, tu instalación está lista.
+
+## 5. Usando otros navegadores (no solo Chrome)
+
+Todos los ejemplos anteriores usaron Chrome, pero Selenium Manager funciona igual con otros navegadores. Solo cambias la clase del driver:
+
+**Python:**
+```python
+from selenium import webdriver
+
+# Firefox
+driver = webdriver.Firefox()
+
+# Edge
+driver = webdriver.Edge()
+```
+
+**Java:**
+```java
+// Firefox
+WebDriver driver = new FirefoxDriver();
+
+// Edge
+WebDriver driver = new EdgeDriver();
+```
+
+No necesitas descargar `geckodriver` ni `msedgedriver` manualmente — Selenium Manager detecta cuál necesitas según la clase que uses y lo resuelve automáticamente, igual que con Chrome.
+
+## 6. Modo headless (sin interfaz gráfica)
+
+En muchos casos —sobre todo en servidores de CI/CD o máquinas sin entorno gráfico— necesitas correr el navegador **sin que se abra una ventana visible**. Esto se llama modo *headless*.
+
+**Python:**
+```python
+from selenium import webdriver
+from selenium.webdriver.chrome.options import Options
+
+options = Options()
+options.add_argument("--headless=new")  # modo headless moderno de Chrome
+
+driver = webdriver.Chrome(options=options)
+driver.get("https://www.selenium.dev")
+print(driver.title)
+driver.quit()
+```
+
+**Java:**
+```java
+import org.openqa.selenium.chrome.ChromeOptions;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.WebDriver;
+
+ChromeOptions options = new ChromeOptions();
+options.addArguments("--headless=new");
+
+WebDriver driver = new ChromeDriver(options);
+driver.get("https://www.selenium.dev");
+System.out.println(driver.getTitle());
+driver.quit();
+```
+
+Esto es especialmente útil cuando tus pruebas corren automáticamente en un pipeline (Jenkins, GitHub Actions, etc.), donde no hay pantalla ni interfaz gráfica disponible.
+
+## 7. Opciones básicas del navegador (`Options`)
+
+Además de headless, hay otras configuraciones comunes que casi todo setup real termina usando:
+
+**Python:**
+```python
+from selenium import webdriver
+from selenium.webdriver.chrome.options import Options
+
+options = Options()
+options.add_argument("--start-maximized")           # abrir maximizado
+options.add_argument("--ignore-certificate-errors")  # ignorar errores de certificados SSL
+options.add_argument("--disable-notifications")     # desactivar notificaciones del navegador
+options.add_argument("--incognito")                  # modo incógnito
+
+driver = webdriver.Chrome(options=options)
+```
+
+**Java:**
+```java
+ChromeOptions options = new ChromeOptions();
+options.addArguments("--start-maximized");
+options.addArguments("--ignore-certificate-errors");
+options.addArguments("--disable-notifications");
+options.addArguments("--incognito");
+
+WebDriver driver = new ChromeDriver(options);
+```
+
+## 8. Troubleshooting: errores comunes al instalar/configurar
+
+| Error | Causa probable | Solución |
+|---|---|---|
+| `SessionNotCreatedException` | La versión del navegador y el driver no coinciden (típico en Selenium 3 o con drivers descargados manualmente) | Actualizar a Selenium 4.6+ para que Selenium Manager resuelva la versión correcta automáticamente |
+| `WebDriverException: 'chromedriver' executable needs to be in PATH` | Estás en una versión anterior a 4.6 y no configuraste la ruta del driver | Agregar el driver al `PATH`, o mejor aún, actualizar Selenium |
+| Selenium Manager no puede descargar el driver | Firewall, proxy corporativo, o falta de conexión a internet | Configurar el proxy en las variables de entorno (`HTTP_PROXY`/`HTTPS_PROXY`), o descargar el driver manualmente como alternativa |
+| `PermissionError` al ejecutar el driver (macOS/Linux) | El archivo del driver no tiene permisos de ejecución | Ejecutar `chmod +x` sobre el archivo del driver (solo aplica si lo descargaste manualmente) |
+| El navegador se abre pero el script se cuelga o no encuentra elementos | El script intenta interactuar antes de que la página cargue | Agregar esperas explícitas (`WebDriverWait`) — se cubre en la nota de Locators/futuras notas de esperas |
+
+## 9. Otros lenguajes (JavaScript, C#)
+
+Esta guía se enfoca en Python y Java, que son los lenguajes más usados con Selenium en este repositorio. Selenium también tiene bindings oficiales para **JavaScript/TypeScript** (`npm install selenium-webdriver`) y **C#** (paquete NuGet `Selenium.WebDriver`), con una filosofía de instalación equivalente (gestor de paquetes del lenguaje + Selenium Manager resolviendo los drivers). *Pendiente de desarrollar en una nota aparte si se profundiza en esos lenguajes.*
 
 ---
 
