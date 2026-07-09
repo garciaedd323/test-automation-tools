@@ -110,6 +110,9 @@ graph TD
 ### `docs/comparativas/`
 _(Pendiente)_
 
+### `selenium/notas/`
+- [¿Qué es Selenium?](./selenium/notas/que-es-selenium.md) — qué es, para qué se usa, cómo funciona (WebDriver), componentes clave, ejemplos cotidianos y primer script en Python.
+
 ---
 
 ## 🛠 Herramientas cubiertas
@@ -150,7 +153,7 @@ _(Pendiente)_
 ## 🗺 Roadmap
 
 - [ ] Completar `docs/conceptos-generales` (fundamentos de testing y automatización) — 7/8 notas agregadas
-- [ ] Selenium: setup + primeros scripts
+- [ ] Selenium: setup + primeros scripts — introducción agregada, falta instalación/setup y locators
 - [ ] Appium: setup + primer test móvil
 - [ ] Cypress: setup + primer test E2E
 - [ ] Playwright: setup + primer test
