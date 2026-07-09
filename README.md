@@ -112,6 +112,10 @@ _(Pendiente)_
 
 ### `selenium/notas/`
 - [¿Qué es Selenium?](./selenium/notas/que-es-selenium.md) — qué es, para qué se usa, cómo funciona (WebDriver), componentes clave, ejemplos cotidianos y primer script en Python.
+- [Selenium 4 vs versiones anteriores](./selenium/notas/selenium-4-vs-versiones-anteriores.md) — protocolo W3C WebDriver, relative locators, soporte multi-ventana, Chrome DevTools Protocol (CDP), Selenium Grid renovado, tabla comparativa y ejemplos cotidianos.
+- [Instalación y setup](./selenium/notas/instalacion-y-setup.md) — instalación con pip (Python) y Maven/Gradle (Java), manejo de drivers de navegador, Selenium Manager (desde 4.6) vs configuración manual, ejemplos en Python y Java.
+- [Locators](./selenium/notas/locators.md) — las 8 estrategias de `By` (ID, CSS_SELECTOR, XPATH, CLASS_NAME, etc.), orden de prioridad recomendado, razones técnicas y ejemplos cotidianos.
+- [Selenium Grid](./selenium/notas/selenium-grid.md) — qué problema resuelve concretamente (ejecución en paralelo, cobertura multi-navegador/SO), arquitectura Hub-Nodos, Selenium 4 vs 3, configuración con Docker Compose.
 
 ---
 
@@ -153,7 +157,7 @@ _(Pendiente)_
 ## 🗺 Roadmap
 
 - [ ] Completar `docs/conceptos-generales` (fundamentos de testing y automatización) — 7/8 notas agregadas
-- [ ] Selenium: setup + primeros scripts — introducción agregada, falta instalación/setup y locators
+- [ ] Selenium: setup + primeros scripts — introducción, instalación/setup, locators y Selenium Grid agregados; falta primer script completo end-to-end
 - [ ] Appium: setup + primer test móvil
 - [ ] Cypress: setup + primer test E2E
 - [ ] Playwright: setup + primer test
