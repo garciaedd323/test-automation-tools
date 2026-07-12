@@ -120,6 +120,9 @@ _(Pendiente)_
 - [Interacciones con elementos](./selenium/notas/interacciones-elementos-selenium.md) — clicks (normal, JS, `ActionChains`, doble/derecho), `send_keys` y manejo de campos controlados por frameworks, dropdowns nativos (`Select`) vs custom, checkboxes, radio buttons, `ActionChains` avanzado (hover, drag & drop), tabla de errores comunes (`ElementClickInterceptedException`, `StaleElementReferenceException`, etc.) y patrón de `BasePage` reutilizable.
 - [Ventanas, pestañas y frames/iframes (Java)](./selenium/notas/ventanas-frames-selenium-java.md) — manejo de `window handles`, cambio entre pestañas/ventanas, frames/iframes (por nombre, elemento e índice), `defaultContent()` vs `parentFrame()`, tabla de errores comunes y patrón reutilizable `VentanaUtils`. Incluye analogías cotidianas (habitación de hotel / caja fuerte) y diagramas de apoyo.
 - [Alertas de JavaScript (Java)](./selenium/notas/alertas-javascript-selenium-java.md) — los tres tipos de alerta (`alert`, `confirm`, `prompt`), espera explícita con `alertIsPresent()`, lectura de texto, `accept()`/`dismiss()`/`sendKeys()`, alertas nativas del navegador (fuera del alcance de Selenium), tabla resumen, patrón reutilizable `AlertUtils` y diagrama de apoyo. Incluye analogías cotidianas (alarma de incendios).
+- [Page Object Model (Java)](./selenium/notas/page-object-model-selenium-java.md) — el problema sin POM, estructura del patrón (locators privados + métodos públicos), ejemplo completo funcional (Login + Dashboard con navegación entre Page Objects), variante con `PageFactory`/`@FindBy`, tabla de beneficios y buenas prácticas. Incluye el primer script end-to-end (login + assert) del roadmap y diagrama de apoyo.
+- [Screenshots y evidencias (Java)](./selenium/notas/screenshots-evidencias-selenium-java.md) — captura básica con `TakesScreenshot`, captura automática solo en fallos con `TestWatcher` (JUnit 5), convención de nombres con timestamp, integración con Allure, captura de HTML como evidencia extra, buenas prácticas. Incluye diagrama de apoyo.
+- [Excepciones comunes (Java)](./selenium/notas/excepciones-comunes-selenium-java.md) — `NoSuchElementException`, `StaleElementReferenceException` y `TimeoutException`: qué significan, causas típicas, cómo depurarlas paso a paso, patrón de reintento ante staleness, tabla resumen de diagnóstico rápido y errores de principiante que agravan estas excepciones. Incluye diagrama comparativo.
 
 ---
 
@@ -127,7 +130,7 @@ _(Pendiente)_
 
 | Herramienta | Tipo | Lenguaje(s) principal(es) | Estado |
 |---|---|---|---|
-| [Selenium](./selenium) | Web (navegador) | Java, Python, JS, C# | 🟡 En progreso |
+| [Selenium](./selenium) | Web (navegador) | Java, Python, JS, C# | 🟢 Fundamentos completos |
 | [Appium](./appium) | Móvil (Android/iOS) | Java, Python, JS | 🟡 En progreso |
 | [Cypress](./cypress) | Web (navegador) | JavaScript/TypeScript | 🟡 En progreso |
 | [Playwright](./playwright) | Web (navegador, multi-motor) | JS/TS, Python, .NET, Java | 🟡 En progreso |
@@ -161,7 +164,7 @@ _(Pendiente)_
 ## 🗺 Roadmap
 
 - [ ] Completar `docs/conceptos-generales` (fundamentos de testing y automatización) — 7/8 notas agregadas
-- [ ] Selenium: setup + primeros scripts — introducción, instalación/setup, locators, Selenium Grid, esperas, interacciones con elementos, manejo de ventanas/frames y alertas de JavaScript agregados; falta primer script completo end-to-end (login + assert), Page Object Model aplicado y excepciones comunes consolidadas
+- [x] Selenium: fundamentos completos — introducción, instalación/setup, locators, Selenium Grid, esperas, interacciones con elementos, ventanas/frames, alertas de JavaScript, Page Object Model (con script end-to-end de login+assert), screenshots/evidencias y excepciones comunes. Pendiente: sección `tutoriales/` con guías paso a paso adicionales.
 - [ ] Appium: setup + primer test móvil
 - [ ] Cypress: setup + primer test E2E
 - [ ] Playwright: setup + primer test
