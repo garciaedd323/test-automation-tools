@@ -118,6 +118,7 @@ _(Pendiente)_
 - [Selenium Grid](./selenium/notas/selenium-grid.md) — qué problema resuelve concretamente (ejecución en paralelo, cobertura multi-navegador/SO), arquitectura Hub-Nodos, Selenium 4 vs 3, configuración con Docker Compose.
 - [Esperas en Selenium](./selenium/notas/esperas-selenium.md) — por qué evitar `time.sleep()`, implicit vs explicit vs fluent wait, `expected_conditions` más usadas, condiciones personalizadas, tabla comparativa, patrón Page Object para esperas y ejemplos con analogías cotidianas.
 - [Interacciones con elementos](./selenium/notas/interacciones-elementos-selenium.md) — clicks (normal, JS, `ActionChains`, doble/derecho), `send_keys` y manejo de campos controlados por frameworks, dropdowns nativos (`Select`) vs custom, checkboxes, radio buttons, `ActionChains` avanzado (hover, drag & drop), tabla de errores comunes (`ElementClickInterceptedException`, `StaleElementReferenceException`, etc.) y patrón de `BasePage` reutilizable.
+- [Ventanas, pestañas y frames/iframes (Java)](./selenium/notas/ventanas-frames-selenium-java.md) — manejo de `window handles`, cambio entre pestañas/ventanas, frames/iframes (por nombre, elemento e índice), `defaultContent()` vs `parentFrame()`, manejo de alertas de JavaScript (`alert`/`confirm`/`prompt`), tabla de errores comunes y patrón reutilizable `VentanaUtils`. Incluye analogías cotidianas (habitación de hotel / caja fuerte) y diagramas de apoyo.
 
 ---
 
@@ -140,7 +141,7 @@ _(Pendiente)_
 - **`docs/`** → panorama general: qué es la automatización de pruebas, pirámide de testing, cuándo usar cada herramienta, comparativas directas (ej. Cypress vs Playwright).
 - **`<herramienta>/notas/`** → apuntes propios en Markdown, resumidos de tutoriales o documentación oficial.
 - **`<herramienta>/recursos/prompts/`** → prompts reutilizables (ej. para generar scripts, debug de tests, prompts de IA usados en el proceso).
-- **`<herramienta>/recursos/capturas/`** → capturas de pantalla de configuraciones, errores, resultados de ejecución, etc.
+- **`<herramienta>/recursos/capturas/`** → capturas de pantalla de configuraciones, errores, resultados de ejecución, así como diagramas SVG de apoyo (ej. flujos de ventanas/frames) que no van embebidos como Mermaid en la nota.
 - **`<herramienta>/tutoriales/`** → tutoriales paso a paso ya convertidos a Markdown.
 - **`ci-cd/`** → integración de las herramientas anteriores en pipelines (Jenkins, GitHub Actions, GitLab CI).
 - **`recursos-generales/`** → todo lo que no pertenece a una sola herramienta (capturas sueltas, prompts generales).
@@ -159,7 +160,7 @@ _(Pendiente)_
 ## 🗺 Roadmap
 
 - [ ] Completar `docs/conceptos-generales` (fundamentos de testing y automatización) — 7/8 notas agregadas
-- [ ] Selenium: setup + primeros scripts — introducción, instalación/setup, locators, Selenium Grid, esperas e interacciones con elementos agregados; falta primer script completo end-to-end (login + assert), Page Object Model aplicado, manejo de ventanas/frames/alertas y excepciones comunes
+- [ ] Selenium: setup + primeros scripts — introducción, instalación/setup, locators, Selenium Grid, esperas, interacciones con elementos y manejo de ventanas/frames/alertas agregados; falta primer script completo end-to-end (login + assert), Page Object Model aplicado y excepciones comunes consolidadas
 - [ ] Appium: setup + primer test móvil
 - [ ] Cypress: setup + primer test E2E
 - [ ] Playwright: setup + primer test
