@@ -1,0 +1,66 @@
+<svg viewBox="0 0 900 420" xmlns="http://www.w3.org/2000/svg" font-family="Arial, sans-serif">
+  <rect width="900" height="420" fill="#f5f6f8"/>
+
+  <!-- Página de fondo -->
+  <rect x="30" y="30" width="840" height="360" rx="8" fill="#ffffff" stroke="#c9ccd1" stroke-width="2"/>
+  <rect x="30" y="30" width="840" height="34" rx="8" fill="#e2e5ea"/>
+  <circle cx="850" cy="47" r="4" fill="#e05d5d"/>
+  <circle cx="835" cy="47" r="4" fill="#e8b84b"/>
+  <circle cx="820" cy="47" r="4" fill="#4caf6b"/>
+  <text x="48" y="52" font-size="12" fill="#333">tienda-ejemplo.com/pedidos</text>
+
+  <text x="55" y="105" font-size="14" font-weight="bold" fill="#222">Página (contexto normal)</text>
+
+  <rect x="55" y="125" width="260" height="44" rx="6" fill="#f5f0e8" stroke="#e0d0b0"/>
+  <text x="70" y="153" font-size="12" fill="#5a4a2a" font-weight="bold">Botón "Eliminar registro"</text>
+
+  <text x="55" y="210" font-size="11" fill="#888">driver.findElement(By.id("btn-eliminar")).click();</text>
+
+  <!-- flecha hacia la alerta -->
+  <line x1="330" y1="147" x2="470" y2="147" stroke="#4a90d9" stroke-width="3" marker-end="url(#arrowA)"/>
+  <text x="335" y="132" font-size="11" fill="#4a90d9" font-weight="bold">dispara el confirm()</text>
+
+  <!-- Overlay oscuro simulando que la pagina queda bloqueada -->
+  <rect x="30" y="30" width="840" height="360" rx="8" fill="#000000" opacity="0.08"/>
+
+  <!-- Caja de alerta -->
+  <g>
+    <rect x="470" y="90" width="360" height="200" rx="10" fill="#ffffff" stroke="#e8b84b" stroke-width="3"/>
+    <rect x="470" y="90" width="360" height="34" rx="10" fill="#fff6df"/>
+    <text x="486" y="112" font-size="12" font-weight="bold" fill="#8a6d1a">🔔 Alerta de JavaScript</text>
+
+    <text x="486" y="150" font-size="13" fill="#333">"¿Seguro que deseas eliminar</text>
+    <text x="486" y="168" font-size="13" fill="#333">este registro?"</text>
+
+    <!-- botones -->
+    <rect x="486" y="200" width="110" height="36" rx="6" fill="#4caf6b"/>
+    <text x="505" y="223" font-size="12" fill="#ffffff" font-weight="bold">Aceptar</text>
+
+    <rect x="610" y="200" width="110" height="36" rx="6" fill="#e05d5d"/>
+    <text x="632" y="223" font-size="12" fill="#ffffff" font-weight="bold">Cancelar</text>
+
+    <text x="486" y="260" font-size="11" fill="#8a6d1a" font-style="italic">alerta.accept()  /  alerta.dismiss()</text>
+    <text x="486" y="278" font-size="11" fill="#8a6d1a" font-style="italic">alerta.getText() para leer el mensaje</text>
+  </g>
+
+  <!-- etiqueta bloqueo -->
+  <text x="55" y="250" font-size="11" fill="#b04a4a" font-style="italic">
+    ⚠ Mientras la alerta está abierta, no se puede
+  </text>
+  <text x="55" y="266" font-size="11" fill="#b04a4a" font-style="italic">
+    interactuar con el resto de la página (bloqueo total).
+  </text>
+
+  <text x="55" y="320" font-size="11" fill="#888">wait.until(ExpectedConditions.alertIsPresent());</text>
+  <text x="55" y="338" font-size="11" fill="#888">Alert alerta = driver.switchTo().alert();</text>
+
+  <defs>
+    <marker id="arrowA" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto">
+      <path d="M0,0 L0,6 L9,3 z" fill="#4a90d9"/>
+    </marker>
+  </defs>
+
+  <text x="30" y="405" font-size="12" fill="#999" font-style="italic">
+    Diagrama ilustrativo — no es una captura real de un sitio web.
+  </text>
+</svg>
