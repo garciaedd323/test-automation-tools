@@ -1,0 +1,112 @@
+<svg viewBox="0 0 1000 520" xmlns="http://www.w3.org/2000/svg" font-family="Arial, sans-serif">
+  <rect width="1000" height="520" fill="#f5f6f8"/>
+
+  <text x="30" y="35" font-size="16" font-weight="bold" fill="#222">De cero a pipeline de CI — con Gradle</text>
+
+  <!-- Paso 1: Setup -->
+  <g>
+    <rect x="30" y="60" width="160" height="150" rx="8" fill="#ffffff" stroke="#02303a" stroke-width="3"/>
+    <rect x="30" y="60" width="160" height="30" rx="8" fill="#d6e9ec"/>
+    <text x="42" y="80" font-size="11" font-weight="bold" fill="#02303a">1. Setup</text>
+    <text x="42" y="110" font-size="9" fill="#666">gradle init</text>
+    <text x="42" y="128" font-size="9" fill="#666">build.gradle</text>
+    <text x="42" y="146" font-size="9" fill="#666">+ gradlew (wrapper)</text>
+    <text x="42" y="164" font-size="9" fill="#666">Selenium + JUnit 5</text>
+    <text x="42" y="190" font-size="8" fill="#999" font-style="italic">herramientas incluidas</text>
+    <text x="42" y="202" font-size="8" fill="#999" font-style="italic">en la propia obra</text>
+  </g>
+
+  <line x1="190" y1="135" x2="220" y2="135" stroke="#999" stroke-width="3" marker-end="url(#a)"/>
+
+  <!-- Paso 2: Primer test -->
+  <g>
+    <rect x="220" y="60" width="160" height="150" rx="8" fill="#ffffff" stroke="#4a90d9" stroke-width="3"/>
+    <rect x="220" y="60" width="160" height="30" rx="8" fill="#dceafc"/>
+    <text x="232" y="80" font-size="11" font-weight="bold" fill="#274b78">2. Primer test</text>
+    <text x="232" y="110" font-size="9" fill="#444">findElement + click</text>
+    <text x="232" y="128" font-size="9" fill="#444">sendKeys + assert</text>
+    <text x="232" y="146" font-size="9" fill="#444">./gradlew test</text>
+    <text x="232" y="164" font-size="9" fill="#c0392b">(código igual a Maven)</text>
+    <text x="232" y="190" font-size="8" fill="#999" font-style="italic">habitación funcional</text>
+  </g>
+
+  <line x1="380" y1="135" x2="410" y2="135" stroke="#999" stroke-width="3" marker-end="url(#a)"/>
+
+  <!-- Paso 3: POM -->
+  <g>
+    <rect x="410" y="60" width="170" height="150" rx="8" fill="#ffffff" stroke="#e8b84b" stroke-width="3"/>
+    <rect x="410" y="60" width="170" height="30" rx="8" fill="#fff6df"/>
+    <text x="422" y="80" font-size="11" font-weight="bold" fill="#8a6d1a">3. Page Object Model</text>
+    <text x="422" y="110" font-size="9" fill="#444">BasePage → LoginPage</text>
+    <text x="422" y="128" font-size="9" fill="#444">src/main visible</text>
+    <text x="422" y="146" font-size="9" fill="#444">desde src/test</text>
+    <text x="422" y="190" font-size="8" fill="#999" font-style="italic">mismo diseño interior</text>
+  </g>
+
+  <line x1="580" y1="135" x2="610" y2="135" stroke="#999" stroke-width="3" marker-end="url(#a)"/>
+
+  <!-- Paso 4: Screenshots + Reportes -->
+  <g>
+    <rect x="610" y="60" width="180" height="150" rx="8" fill="#ffffff" stroke="#4caf6b" stroke-width="3"/>
+    <rect x="610" y="60" width="180" height="30" rx="8" fill="#e9f7ec"/>
+    <text x="622" y="80" font-size="11" font-weight="bold" fill="#2c662d">4. Evidencia y reportes</text>
+    <text x="622" y="110" font-size="9" fill="#444">build/screenshots/</text>
+    <text x="622" y="128" font-size="9" fill="#444">plugin io.qameta.allure</text>
+    <text x="622" y="146" font-size="9" fill="#444">./gradlew allureServe</text>
+    <text x="622" y="190" font-size="8" fill="#999" font-style="italic">kit de cámaras pre-armado</text>
+  </g>
+
+  <line x1="790" y1="135" x2="820" y2="135" stroke="#999" stroke-width="3" marker-end="url(#a)"/>
+
+  <!-- Paso 5: CI -->
+  <g>
+    <rect x="820" y="60" width="150" height="150" rx="8" fill="#ffffff" stroke="#8e44ad" stroke-width="3"/>
+    <rect x="820" y="60" width="150" height="30" rx="8" fill="#f0e6f5"/>
+    <text x="832" y="80" font-size="11" font-weight="bold" fill="#5b2d6e">5. CI/CD</text>
+    <text x="832" y="110" font-size="9" fill="#444">chmod +x gradlew</text>
+    <text x="832" y="128" font-size="9" fill="#444">./gradlew test</text>
+    <text x="832" y="146" font-size="9" fill="#444">headless Chrome</text>
+    <text x="832" y="190" font-size="8" fill="#999" font-style="italic">red eléctrica de la ciudad</text>
+  </g>
+
+  <!-- Tabla de diferencias -->
+  <rect x="30" y="240" width="940" height="240" rx="8" fill="#ffffff" stroke="#ccc" stroke-width="2" stroke-dasharray="6,3"/>
+  <text x="45" y="265" font-size="13" font-weight="bold" fill="#444">Lo que cambia frente a Maven (el código Java es idéntico)</text>
+
+  <line x1="45" y1="280" x2="955" y2="280" stroke="#ddd" stroke-width="1"/>
+
+  <text x="60" y="305" font-size="11" font-weight="bold" fill="#666">Aspecto</text>
+  <text x="360" y="305" font-size="11" font-weight="bold" fill="#4a90d9">Maven</text>
+  <text x="650" y="305" font-size="11" font-weight="bold" fill="#02303a">Gradle</text>
+
+  <line x1="45" y1="315" x2="955" y2="315" stroke="#eee" stroke-width="1"/>
+  <text x="60" y="335" font-size="10" fill="#444">Archivo de config</text>
+  <text x="360" y="335" font-size="10" fill="#666">pom.xml (XML)</text>
+  <text x="650" y="335" font-size="10" fill="#666">build.gradle (Groovy)</text>
+
+  <line x1="45" y1="345" x2="955" y2="345" stroke="#eee" stroke-width="1"/>
+  <text x="60" y="365" font-size="10" fill="#444">Comando de test</text>
+  <text x="360" y="365" font-size="10" fill="#666">mvn test</text>
+  <text x="650" y="365" font-size="10" fill="#666">./gradlew test</text>
+
+  <line x1="45" y1="375" x2="955" y2="375" stroke="#eee" stroke-width="1"/>
+  <text x="60" y="395" font-size="10" fill="#444">Carpeta de salida</text>
+  <text x="360" y="395" font-size="10" fill="#666">target/</text>
+  <text x="650" y="395" font-size="10" fill="#666">build/</text>
+
+  <line x1="45" y1="405" x2="955" y2="405" stroke="#eee" stroke-width="1"/>
+  <text x="60" y="425" font-size="10" fill="#444">Integración con Allure</text>
+  <text x="360" y="425" font-size="10" fill="#666">javaagent manual</text>
+  <text x="650" y="425" font-size="10" fill="#666">plugin oficial, más simple</text>
+
+  <line x1="45" y1="435" x2="955" y2="435" stroke="#eee" stroke-width="1"/>
+  <text x="60" y="455" font-size="10" fill="#444">Sintaxis de dependencias</text>
+  <text x="360" y="455" font-size="10" fill="#666">bloques XML verbosos</text>
+  <text x="650" y="455" font-size="10" fill="#666">líneas cortas 'implementation'</text>
+
+  <defs>
+    <marker id="a" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto"><path d="M0,0 L0,6 L9,3 z" fill="#999"/></marker>
+  </defs>
+
+  <text x="30" y="505" font-size="12" fill="#999" font-style="italic">Diagrama ilustrativo — no es una captura real de un sitio web.</text>
+</svg>

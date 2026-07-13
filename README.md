@@ -126,13 +126,16 @@ _(Pendiente)_
 - [Integración con test runner: JUnit 5 vs TestNG (Java)](./selenium/notas/test-runner-selenium-java.md) — qué le falta a Selenium sin un test runner, fixtures (`@BeforeEach`/`@AfterEach` vs `@BeforeMethod`/`@AfterMethod`), asserts, tests parametrizados (`@CsvSource` / `@DataProvider`), agrupar/filtrar con `@Tag`/`groups`, dependencias entre tests (`dependsOnMethods`), tabla comparativa JUnit 5 vs TestNG y buenas prácticas. Incluye diagrama de apoyo.
 - [Generación de reportes: Allure Report y Extent Reports (Java)](./selenium/notas/reportes-selenium-java.md) — reporte básico de Surefire/Maven, configuración de Allure (`@Step`, `@Severity`, adjuntar screenshots y HTML automáticamente, categorización de fallos), alternativa con Extent Reports, tabla comparativa Surefire vs Allure vs Extent Reports y buenas prácticas para reportes útiles. Incluye diagrama comparativo.
 
+### `selenium/tutoriales/`
+- [Suite completa de automatización con Gradle](./selenium/tutoriales/tutorial-suite-completa-selenium-gradle.md) — recorrido paso a paso end-to-end: setup del proyecto con `gradle init`, primer test crudo, esperas explícitas, refactor a Page Object Model, screenshots automáticos en fallos, reportes con Allure (plugin oficial de Gradle), modo headless, y pipeline de GitHub Actions. Incluye tabla comparativa Maven vs Gradle y diagrama del flujo completo.
+
 ---
 
 ## 🛠 Herramientas cubiertas
 
 | Herramienta | Tipo | Lenguaje(s) principal(es) | Estado |
 |---|---|---|---|
-| [Selenium](./selenium) | Web (navegador) | Java, Python, JS, C# | 🟢 Completo (fundamentos + avanzado) |
+| [Selenium](./selenium) | Web (navegador) | Java, Python, JS, C# | 🟢 Completo (fundamentos + avanzado + tutorial) |
 | [Appium](./appium) | Móvil (Android/iOS) | Java, Python, JS | 🟡 En progreso |
 | [Cypress](./cypress) | Web (navegador) | JavaScript/TypeScript | 🟡 En progreso |
 | [Playwright](./playwright) | Web (navegador, multi-motor) | JS/TS, Python, .NET, Java | 🟡 En progreso |
@@ -166,7 +169,8 @@ _(Pendiente)_
 ## 🗺 Roadmap
 
 - [ ] Completar `docs/conceptos-generales` (fundamentos de testing y automatización) — 7/8 notas agregadas
-- [x] Selenium: fundamentos + avanzado completos — introducción, instalación/setup, locators, Selenium Grid, esperas, interacciones con elementos, ventanas/frames, alertas de JavaScript, Page Object Model (con script end-to-end de login+assert), screenshots/evidencias, excepciones comunes, integración con test runner (JUnit 5/TestNG) y generación de reportes (Allure/Extent Reports). Pendiente: sección `tutoriales/` con guías paso a paso adicionales y `docs/comparativas` (Selenium vs Playwright vs Cypress).
+- [x] Selenium: fundamentos + avanzado completos — introducción, instalación/setup, locators, Selenium Grid, esperas, interacciones con elementos, ventanas/frames, alertas de JavaScript, Page Object Model (con script end-to-end de login+assert), screenshots/evidencias, excepciones comunes, integración con test runner (JUnit 5/TestNG) y generación de reportes (Allure/Extent Reports).
+- [x] Selenium: `tutoriales/` — primer tutorial agregado (suite completa con Gradle: setup → POM → screenshots → Allure → GitHub Actions).
 - [ ] Appium: setup + primer test móvil
 - [ ] Cypress: setup + primer test E2E
 - [ ] Playwright: setup + primer test
