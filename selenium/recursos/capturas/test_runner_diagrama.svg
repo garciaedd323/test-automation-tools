@@ -1,0 +1,72 @@
+<svg viewBox="0 0 940 440" xmlns="http://www.w3.org/2000/svg" font-family="Arial, sans-serif">
+  <rect width="940" height="440" fill="#f5f6f8"/>
+
+  <text x="30" y="35" font-size="16" font-weight="bold" fill="#222">Selenium solo vs. Selenium + Test Runner</text>
+
+  <!-- Columna 1: Selenium solo -->
+  <g>
+    <rect x="30" y="60" width="380" height="340" rx="8" fill="#ffffff" stroke="#c9ccd1" stroke-width="3"/>
+    <rect x="30" y="60" width="380" height="34" rx="8" fill="#e2e5ea"/>
+    <text x="45" y="82" font-size="13" font-weight="bold" fill="#444">🎮 Selenium solo (control remoto)</text>
+
+    <rect x="55" y="110" width="330" height="45" rx="6" fill="#f0f4fa" stroke="#dbe2ea"/>
+    <text x="70" y="132" font-size="11" fill="#444">driver.findElement(...).click()</text>
+
+    <rect x="55" y="165" width="330" height="45" rx="6" fill="#f0f4fa" stroke="#dbe2ea"/>
+    <text x="70" y="187" font-size="11" fill="#444">driver.findElement(...).sendKeys(...)</text>
+
+    <rect x="55" y="220" width="330" height="45" rx="6" fill="#fdecec" stroke="#e6c6c6"/>
+    <text x="70" y="240" font-size="11" fill="#883333">¿Cómo verifico si esto funcionó?</text>
+    <text x="70" y="255" font-size="10" fill="#883333" font-style="italic">(sin assert formal)</text>
+
+    <rect x="55" y="275" width="330" height="45" rx="6" fill="#fdecec" stroke="#e6c6c6"/>
+    <text x="70" y="295" font-size="11" fill="#883333">¿Se cierra el navegador si falla?</text>
+    <text x="70" y="310" font-size="10" fill="#883333" font-style="italic">(sin garantía de limpieza)</text>
+
+    <rect x="55" y="330" width="330" height="45" rx="6" fill="#fdecec" stroke="#e6c6c6"/>
+    <text x="70" y="350" font-size="11" fill="#883333">¿Reportes? ¿Correr solo un subconjunto?</text>
+    <text x="70" y="365" font-size="10" fill="#883333" font-style="italic">(no existe sin el runner)</text>
+  </g>
+
+  <!-- flecha -->
+  <line x1="410" y1="230" x2="480" y2="230" stroke="#4a90d9" stroke-width="4" marker-end="url(#arr)"/>
+  <text x="415" y="215" font-size="11" fill="#4a90d9" font-weight="bold">+ JUnit 5 / TestNG</text>
+
+  <!-- Columna 2: con runner -->
+  <g>
+    <rect x="490" y="60" width="420" height="340" rx="8" fill="#ffffff" stroke="#4caf6b" stroke-width="3"/>
+    <rect x="490" y="60" width="420" height="34" rx="8" fill="#e9f7ec"/>
+    <text x="505" y="82" font-size="13" font-weight="bold" fill="#2c662d">📺 Con Test Runner (televisor completo)</text>
+
+    <rect x="515" y="110" width="180" height="45" rx="6" fill="#e9f7ec" stroke="#cfe6cf"/>
+    <text x="527" y="128" font-size="10" fill="#2c662d" font-weight="bold">@BeforeEach</text>
+    <text x="527" y="143" font-size="9" fill="#2c662d">abrir driver limpio</text>
+
+    <rect x="715" y="110" width="180" height="45" rx="6" fill="#e9f7ec" stroke="#cfe6cf"/>
+    <text x="727" y="128" font-size="10" fill="#2c662d" font-weight="bold">@AfterEach</text>
+    <text x="727" y="143" font-size="9" fill="#2c662d">cerrar SIEMPRE, incluso si falla</text>
+
+    <rect x="515" y="165" width="380" height="45" rx="6" fill="#dceafc" stroke="#b8d4f0"/>
+    <text x="527" y="188" font-size="10" fill="#274b78" font-weight="bold">Assertions.assertEquals(esperado, actual)</text>
+
+    <rect x="515" y="220" width="180" height="45" rx="6" fill="#fff6df" stroke="#e6dcb0"/>
+    <text x="527" y="238" font-size="10" fill="#8a6d1a" font-weight="bold">@ParameterizedTest</text>
+    <text x="527" y="253" font-size="9" fill="#8a6d1a">1 test, N combinaciones</text>
+
+    <rect x="715" y="220" width="180" height="45" rx="6" fill="#fff6df" stroke="#e6dcb0"/>
+    <text x="727" y="238" font-size="10" fill="#8a6d1a" font-weight="bold">@Tag("smoke")</text>
+    <text x="727" y="253" font-size="9" fill="#8a6d1a">correr subconjuntos</text>
+
+    <rect x="515" y="275" width="380" height="45" rx="6" fill="#f5f0e8" stroke="#e0d0b0"/>
+    <text x="527" y="298" font-size="10" fill="#5a4a2a" font-weight="bold">📋 Reporte generado automáticamente</text>
+
+    <text x="515" y="345" font-size="10" fill="#666" font-style="italic">Selenium sigue siendo el "motor" —</text>
+    <text x="515" y="360" font-size="10" fill="#666" font-style="italic">el runner es la carrocería, volante y tablero.</text>
+  </g>
+
+  <defs>
+    <marker id="arr" markerWidth="12" markerHeight="12" refX="9" refY="4" orient="auto"><path d="M0,0 L0,8 L11,4 z" fill="#4a90d9"/></marker>
+  </defs>
+
+  <text x="30" y="425" font-size="12" fill="#999" font-style="italic">Diagrama ilustrativo — no es una captura real de un sitio web.</text>
+</svg>

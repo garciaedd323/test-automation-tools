@@ -1,0 +1,80 @@
+<svg viewBox="0 0 960 420" xmlns="http://www.w3.org/2000/svg" font-family="Arial, sans-serif">
+  <rect width="960" height="420" fill="#f5f6f8"/>
+
+  <text x="30" y="35" font-size="16" font-weight="bold" fill="#222">De un recibo simple a un informe de auditoría completo</text>
+
+  <!-- Nivel 1: Surefire -->
+  <g>
+    <rect x="30" y="60" width="270" height="320" rx="8" fill="#ffffff" stroke="#c9ccd1" stroke-width="3"/>
+    <rect x="30" y="60" width="270" height="34" rx="8" fill="#e2e5ea"/>
+    <text x="45" y="82" font-size="12" font-weight="bold" fill="#444">🧾 Surefire (básico)</text>
+
+    <rect x="50" y="110" width="230" height="90" fill="#fafafa" stroke="#ddd"/>
+    <text x="60" y="130" font-size="9" fill="#666">Tests run: 3, Failures: 1</text>
+    <text x="60" y="148" font-size="9" fill="#666">loginValido: PASSED</text>
+    <text x="60" y="164" font-size="9" fill="#666">loginBloqueado: FAILED</text>
+    <text x="60" y="180" font-size="9" fill="#c0392b">Expected: "Cuenta bloqueada"</text>
+
+    <text x="45" y="235" font-size="10" fill="#666" font-weight="bold">Como un recibo de</text>
+    <text x="45" y="250" font-size="10" fill="#666" font-weight="bold">máquina expendedora</text>
+    <text x="45" y="275" font-size="9" fill="#999">✓ Rápido, gratis</text>
+    <text x="45" y="290" font-size="9" fill="#999">✕ Sin pasos, sin capturas</text>
+    <text x="45" y="305" font-size="9" fill="#999">✕ Sin contexto del fallo</text>
+  </g>
+
+  <!-- flecha -->
+  <line x1="300" y1="220" x2="345" y2="220" stroke="#999" stroke-width="3" marker-end="url(#a1)"/>
+
+  <!-- Nivel 2: HTML report -->
+  <g>
+    <rect x="345" y="60" width="270" height="320" rx="8" fill="#ffffff" stroke="#4a90d9" stroke-width="3"/>
+    <rect x="345" y="60" width="270" height="34" rx="8" fill="#dceafc"/>
+    <text x="360" y="82" font-size="12" font-weight="bold" fill="#274b78">📄 Reporte HTML navegable</text>
+
+    <rect x="365" y="110" width="230" height="90" fill="#fafafa" stroke="#ddd"/>
+    <rect x="375" y="120" width="210" height="15" fill="#4caf6b" opacity="0.3"/>
+    <text x="380" y="131" font-size="8" fill="#2c662d">loginValido — PASSED</text>
+    <rect x="375" y="140" width="210" height="15" fill="#e05d5d" opacity="0.3"/>
+    <text x="380" y="151" font-size="8" fill="#883333">loginBloqueado — FAILED</text>
+    <rect x="375" y="160" width="210" height="15" fill="#4caf6b" opacity="0.3"/>
+    <text x="380" y="171" font-size="8" fill="#2c662d">logout — PASSED</text>
+
+    <text x="360" y="235" font-size="10" fill="#274b78" font-weight="bold">Como la versión</text>
+    <text x="360" y="250" font-size="10" fill="#274b78" font-weight="bold">"con formato" del recibo</text>
+    <text x="360" y="275" font-size="9" fill="#999">✓ Visual, con colores</text>
+    <text x="360" y="290" font-size="9" fill="#999">✓ Fácil de compartir</text>
+    <text x="360" y="305" font-size="9" fill="#999">✕ Aún sin pasos ni evidencia</text>
+  </g>
+
+  <!-- flecha -->
+  <line x1="615" y1="220" x2="660" y2="220" stroke="#e8b84b" stroke-width="3" marker-end="url(#a2)"/>
+
+  <!-- Nivel 3: Allure -->
+  <g>
+    <rect x="660" y="60" width="270" height="320" rx="8" fill="#ffffff" stroke="#e8b84b" stroke-width="3"/>
+    <rect x="660" y="60" width="270" height="34" rx="8" fill="#fff6df"/>
+    <text x="675" y="82" font-size="12" font-weight="bold" fill="#8a6d1a">📊 Allure (interactivo)</text>
+
+    <rect x="680" y="110" width="230" height="120" fill="#fafafa" stroke="#ddd"/>
+    <text x="690" y="128" font-size="9" fill="#444" font-weight="bold">loginBloqueado — FAILED</text>
+    <text x="690" y="145" font-size="8" fill="#666">✓ Paso 1: ingresar usuario</text>
+    <text x="690" y="158" font-size="8" fill="#666">✓ Paso 2: ingresar clave</text>
+    <text x="690" y="171" font-size="8" fill="#c0392b">✕ Paso 3: verificar bloqueo</text>
+    <rect x="690" y="180" width="60" height="40" fill="#eee" stroke="#ccc"/>
+    <text x="695" y="203" font-size="7" fill="#999">[captura]</text>
+    <text x="760" y="195" font-size="8" fill="#666">+ HTML de la</text>
+    <text x="760" y="207" font-size="8" fill="#666">página adjunto</text>
+
+    <text x="675" y="255" font-size="10" fill="#8a6d1a" font-weight="bold">Como el informe de</text>
+    <text x="675" y="270" font-size="10" fill="#8a6d1a" font-weight="bold">auditoría completo</text>
+    <text x="675" y="295" font-size="9" fill="#999">✓ Pasos + capturas + tendencias</text>
+    <text x="675" y="310" font-size="9" fill="#999">✓ Categorías de fallo</text>
+  </g>
+
+  <defs>
+    <marker id="a1" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto"><path d="M0,0 L0,6 L9,3 z" fill="#999"/></marker>
+    <marker id="a2" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto"><path d="M0,0 L0,6 L9,3 z" fill="#e8b84b"/></marker>
+  </defs>
+
+  <text x="30" y="405" font-size="12" fill="#999" font-style="italic">Diagrama ilustrativo — no es una captura real de un sitio web.</text>
+</svg>
