@@ -128,6 +128,7 @@ _(Pendiente)_
 
 ### `selenium/tutoriales/`
 - [Suite completa de automatización con Gradle](./selenium/tutoriales/tutorial-suite-completa-selenium-gradle.md) — recorrido paso a paso end-to-end: setup del proyecto con `gradle init`, primer test crudo, esperas explícitas, refactor a Page Object Model, screenshots automáticos en fallos, reportes con Allure (plugin oficial de Gradle), modo headless, y pipeline de GitHub Actions. Incluye tabla comparativa Maven vs Gradle y diagrama del flujo completo.
+  - 🖥️ [Versión interactiva (HTML)](./selenium/tutoriales/tutorial-suite-completa-selenium-gradle.html) — mismo contenido en formato de pipeline visual navegable, con sidebar tipo stepper de CI que resalta la etapa activa al hacer scroll.
 
 ---
 

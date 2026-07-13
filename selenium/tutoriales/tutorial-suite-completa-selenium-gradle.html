@@ -1,0 +1,578 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Suite de Automatización — Gradle Pipeline</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=IBM+Plex+Mono:wght@400;500;600&family=Inter:wght@400;500;600&display=swap');
+
+:root{
+  --bg: #0a1614;
+  --panel: #0f1e1b;
+  --panel2: #132723;
+  --border: #1e3330;
+  --text: #e8f0ee;
+  --muted: #7f9791;
+  --accent: #35d0ba;
+  --accent-dim: #1c6b60;
+  --amber: #f0b429;
+  --amber-dim: #6b5119;
+  --red: #ff6b6b;
+}
+
+*{ box-sizing:border-box; }
+html,body{ margin:0; padding:0; }
+body{
+  background: var(--bg);
+  color: var(--text);
+  font-family: 'Inter', system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ---------- Top bar (simula el header de un run de CI) ---------- */
+.topbar{
+  position: sticky; top:0; z-index: 50;
+  background: linear-gradient(180deg, #0c1a17, #0a1614);
+  border-bottom: 1px solid var(--border);
+  padding: 12px 24px;
+  display:flex; align-items:center; gap:14px;
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 12.5px;
+  color: var(--muted);
+}
+.topbar .dot{
+  width:9px; height:9px; border-radius:50%;
+  background: var(--accent);
+  box-shadow: 0 0 8px var(--accent);
+  animation: pulse 1.6s ease-in-out infinite;
+}
+@keyframes pulse{ 0%,100%{opacity:1;} 50%{opacity:.35;} }
+.topbar b{ color: var(--text); font-weight:600; }
+.topbar .sep{ opacity:.3; }
+.topbar .runstatus{
+  margin-left:auto; padding: 3px 10px; border-radius: 20px;
+  border: 1px solid var(--accent-dim); color: var(--accent);
+  font-weight:600; letter-spacing: .03em;
+}
+
+/* ---------- Layout general ---------- */
+.layout{
+  display:grid;
+  grid-template-columns: 300px 1fr;
+  min-height: 100vh;
+}
+
+/* ---------- Sidebar: el "pipeline stepper" ---------- */
+.sidebar{
+  position: sticky; top: 49px;
+  align-self: start;
+  height: calc(100vh - 49px);
+  overflow-y: auto;
+  border-right: 1px solid var(--border);
+  padding: 22px 14px 40px;
+  background: var(--panel);
+}
+.sidebar h2{
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 13px;
+  text-transform: uppercase;
+  letter-spacing: .09em;
+  color: var(--muted);
+  margin: 4px 10px 16px;
+  font-weight: 600;
+}
+.stage{
+  display:flex; align-items:flex-start; gap:10px;
+  padding: 9px 10px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background .15s ease;
+  position: relative;
+}
+.stage:hover{ background: var(--panel2); }
+.stage.active{ background: var(--panel2); }
+.stage .rail{
+  position:absolute; left:19px; top:34px; bottom:-9px;
+  width:1.5px; background: var(--border);
+}
+.stage:last-child .rail{ display:none; }
+.badge{
+  flex-shrink:0; width:20px; height:20px; border-radius:50%;
+  display:flex; align-items:center; justify-content:center;
+  font-family:'IBM Plex Mono', monospace; font-size: 10px; font-weight:600;
+  border: 1.5px solid var(--border); color: var(--muted);
+  background: var(--bg);
+  margin-top: 1px;
+  z-index:1;
+}
+.stage.done .badge{ border-color: var(--accent); background: var(--accent); color: #04231e; }
+.stage.running .badge{ border-color: var(--amber); color: var(--amber); background: var(--bg); animation: spin-pulse 1.2s ease-in-out infinite; }
+@keyframes spin-pulse{ 0%,100%{ box-shadow: 0 0 0 0 rgba(240,180,41,.35); } 50%{ box-shadow: 0 0 0 5px rgba(240,180,41,.12); } }
+.stage-label{ font-size: 13px; line-height: 1.35; }
+.stage-title{ font-weight: 600; color: var(--text); }
+.stage.done .stage-title{ color: var(--accent); }
+.stage.running .stage-title{ color: var(--amber); }
+.stage-sub{ color: var(--muted); font-size: 11.5px; margin-top:1px; }
+
+/* ---------- Contenido principal ---------- */
+main{ padding: 48px 40px 120px; max-width: 760px; }
+.hero{ margin-bottom: 46px; }
+.hero .eyebrow{
+  font-family:'IBM Plex Mono', monospace;
+  color: var(--accent); font-size: 12.5px; letter-spacing:.06em;
+  margin-bottom: 10px;
+}
+.hero h1{
+  font-family:'Space Grotesk', sans-serif;
+  font-size: 38px; line-height:1.1; margin: 0 0 14px;
+  font-weight: 700;
+}
+.hero p{ color: var(--muted); font-size: 15.5px; line-height:1.6; max-width: 600px; }
+
+section.step{ margin-bottom: 64px; padding-top: 6px; }
+section.step .step-head{
+  display:flex; align-items:baseline; gap:12px; margin-bottom: 6px;
+}
+section.step .step-num{
+  font-family:'IBM Plex Mono', monospace; color: var(--accent);
+  font-size: 13px; font-weight:600;
+}
+section.step h2{
+  font-family:'Space Grotesk', sans-serif;
+  font-size: 24px; margin: 0; font-weight:600;
+}
+section.step > p.desc{ color: var(--muted); font-size: 14.5px; line-height:1.65; margin: 10px 0 20px; }
+
+h3.sub{
+  font-family:'Space Grotesk', sans-serif;
+  font-size: 16px; margin: 26px 0 10px; color: var(--text);
+}
+
+/* código estilo terminal */
+.codeblock{
+  background: #08120f;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  margin: 14px 0 18px;
+  overflow: hidden;
+}
+.codeblock .fname{
+  font-family:'IBM Plex Mono', monospace;
+  font-size: 11px; color: var(--muted);
+  padding: 8px 14px;
+  border-bottom: 1px solid var(--border);
+  background: #0c1a17;
+  display:flex; justify-content:space-between;
+}
+.codeblock pre{
+  margin:0; padding: 14px 16px;
+  overflow-x:auto;
+  font-family:'IBM Plex Mono', monospace;
+  font-size: 12.5px; line-height:1.6;
+  color: #cfe8e2;
+}
+.codeblock .cmt{ color: #5f8079; }
+.codeblock .str{ color: #f0b429; }
+.codeblock .kw{ color: #35d0ba; }
+.codeblock .tag{ color: #7fb8ff; }
+
+/* callout de analogía */
+.analogy{
+  border-left: 3px solid var(--amber);
+  background: rgba(240,180,41,.06);
+  padding: 12px 16px;
+  border-radius: 0 8px 8px 0;
+  margin: 16px 0;
+  font-size: 13.8px;
+  line-height: 1.65;
+  color: #e6d9b8;
+}
+.analogy b{ color: var(--amber); }
+
+/* tabla comparativa */
+table.cmp{
+  width:100%; border-collapse: collapse;
+  margin: 18px 0 10px;
+  font-size: 13px;
+}
+table.cmp th{
+  text-align:left; font-family:'Space Grotesk', sans-serif;
+  color: var(--muted); font-weight:600; font-size: 12px;
+  padding: 8px 10px; border-bottom: 1px solid var(--border);
+  text-transform: uppercase; letter-spacing:.03em;
+}
+table.cmp td{
+  padding: 9px 10px; border-bottom: 1px solid var(--border);
+  color: var(--text);
+}
+table.cmp tr:last-child td{ border-bottom:none; }
+table.cmp td.m{ color: #7fb8ff; }
+table.cmp td.g{ color: var(--accent); }
+
+.pill{
+  display:inline-block; font-family:'IBM Plex Mono', monospace;
+  font-size:11px; padding: 2px 8px; border-radius: 20px;
+  border: 1px solid var(--accent-dim); color: var(--accent);
+  margin-right: 6px;
+}
+
+.final-banner{
+  margin-top: 20px;
+  border: 1px solid var(--accent-dim);
+  background: linear-gradient(135deg, rgba(53,208,186,.08), transparent);
+  border-radius: 12px;
+  padding: 22px 24px;
+  text-align:center;
+}
+.final-banner .check{
+  width:44px; height:44px; border-radius:50%;
+  background: var(--accent); color:#04231e;
+  display:flex; align-items:center; justify-content:center;
+  margin: 0 auto 12px; font-size: 20px; font-weight:700;
+}
+.final-banner h3{ font-family:'Space Grotesk', sans-serif; margin: 0 0 6px; font-size:18px; }
+.final-banner p{ color: var(--muted); font-size:13.5px; margin:0; }
+
+@media (max-width: 860px){
+  .layout{ grid-template-columns: 1fr; }
+  .sidebar{ position: relative; height:auto; top:0; border-right:none; border-bottom:1px solid var(--border); }
+  main{ padding: 32px 20px 100px; }
+  .hero h1{ font-size: 28px; }
+}
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <span class="dot"></span>
+  <span><b>suite-login-tests</b></span>
+  <span class="sep">/</span>
+  <span>gradle · main</span>
+  <span class="sep">/</span>
+  <span>ubuntu-latest</span>
+  <span class="runstatus" id="runstatus">EN CURSO</span>
+</div>
+
+<div class="layout">
+  <nav class="sidebar" id="sidebar">
+    <h2>Etapas del pipeline</h2>
+    <div class="stage" data-target="s0"><div class="rail"></div><div class="badge">0</div><div class="stage-label"><div class="stage-title">Prerrequisitos</div><div class="stage-sub">Java, Gradle, Chrome</div></div></div>
+    <div class="stage" data-target="s1"><div class="rail"></div><div class="badge">1</div><div class="stage-label"><div class="stage-title">Crear proyecto</div><div class="stage-sub">gradle init</div></div></div>
+    <div class="stage" data-target="s2"><div class="rail"></div><div class="badge">2</div><div class="stage-label"><div class="stage-title">build.gradle</div><div class="stage-sub">Selenium + JUnit 5</div></div></div>
+    <div class="stage" data-target="s3"><div class="rail"></div><div class="badge">3</div><div class="stage-label"><div class="stage-title">Primer test</div><div class="stage-sub">sin estructura aún</div></div></div>
+    <div class="stage" data-target="s4"><div class="rail"></div><div class="badge">4</div><div class="stage-label"><div class="stage-title">Esperas explícitas</div><div class="stage-sub">WebDriverWait</div></div></div>
+    <div class="stage" data-target="s5"><div class="rail"></div><div class="badge">5</div><div class="stage-label"><div class="stage-title">Page Object Model</div><div class="stage-sub">BasePage + LoginPage</div></div></div>
+    <div class="stage" data-target="s6"><div class="rail"></div><div class="badge">6</div><div class="stage-label"><div class="stage-title">Screenshots</div><div class="stage-sub">evidencia en fallos</div></div></div>
+    <div class="stage" data-target="s7"><div class="rail"></div><div class="badge">7</div><div class="stage-label"><div class="stage-title">Reportes Allure</div><div class="stage-sub">plugin de Gradle</div></div></div>
+    <div class="stage" data-target="s8"><div class="rail"></div><div class="badge">8</div><div class="stage-label"><div class="stage-title">Modo headless</div><div class="stage-sub">para correr en CI</div></div></div>
+    <div class="stage" data-target="s9"><div class="rail"></div><div class="badge">9</div><div class="stage-label"><div class="stage-title">GitHub Actions</div><div class="stage-sub">workflow completo</div></div></div>
+  </nav>
+
+  <main>
+    <div class="hero">
+      <div class="eyebrow">// TUTORIAL · JAVA + SELENIUM + GRADLE</div>
+      <h1>Crea tu primera suite de<br>automatización desde cero</h1>
+      <p>Un recorrido completo, paso a paso, para construir una suite real de tests con Selenium usando <b style="color:var(--text)">Gradle</b> como gestor de build — desde la carpeta vacía hasta un pipeline de CI corriendo solo en cada push. Desplázate: el panel de la izquierda avanza como una ejecución real de pipeline.</p>
+    </div>
+
+    <!-- PASO 0 -->
+    <section class="step" id="s0">
+      <div class="step-head"><span class="step-num">STAGE 0</span><h2>Prerrequisitos</h2></div>
+      <p class="desc">Antes de levantar nada, confirma que el terreno esté listo.</p>
+      <div class="codeblock">
+        <div class="fname">terminal</div>
+        <pre>java -version   <span class="cmt"># JDK 17+</span>
+gradle -version <span class="cmt"># opcional, usaremos el wrapper</span></pre>
+      </div>
+      <div class="analogy"><b>Analogía —</b> esto es como confirmar que tienes electricidad, agua y un terreno legalmente comprado antes de empezar a construir. Sin esto, ningún paso siguiente funciona bien.</div>
+    </section>
+
+    <!-- PASO 1 -->
+    <section class="step" id="s1">
+      <div class="step-head"><span class="step-num">STAGE 1</span><h2>Crear el proyecto Gradle</h2></div>
+      <p class="desc">Levantamos la estructura base del proyecto con el generador oficial de Gradle.</p>
+      <div class="codeblock">
+        <div class="fname">terminal</div>
+        <pre>mkdir suite-login-tests && cd suite-login-tests
+
+gradle init <span class="kw">--type</span> java-application <span class="kw">--dsl</span> groovy \
+  <span class="kw">--test-framework</span> junit-jupiter \
+  <span class="kw">--package</span> com.miempresa.automatizacion \
+  <span class="kw">--project-name</span> suite-login-tests</pre>
+      </div>
+      <div class="codeblock">
+        <div class="fname">estructura generada</div>
+        <pre>suite-login-tests/
+├── build.gradle
+├── settings.gradle
+├── gradlew           <span class="cmt"># wrapper — no requiere Gradle instalado</span>
+├── gradlew.bat
+├── gradle/wrapper/
+└── src/
+    ├── main/java/com/miempresa/automatizacion/
+    └── test/java/com/miempresa/automatizacion/</pre>
+      </div>
+      <div class="analogy"><b>Analogía —</b> el <span class="pill">gradlew</span> es como dejar una copia exacta de las herramientas de construcción guardada dentro de la propia obra: cualquier otro desarrollador usa la misma versión de Gradle sin instalarla manualmente. Evita el clásico "en mi máquina funciona".</div>
+    </section>
+
+    <!-- PASO 2 -->
+    <section class="step" id="s2">
+      <div class="step-head"><span class="step-num">STAGE 2</span><h2>build.gradle — dependencias</h2></div>
+      <p class="desc">La lista de materiales: Selenium, WebDriverManager y JUnit 5.</p>
+      <div class="codeblock">
+        <div class="fname">build.gradle</div>
+        <pre><span class="kw">plugins</span> { id 'java' }
+
+<span class="kw">java</span> {
+    toolchain { languageVersion = JavaLanguageVersion.of(17) }
+}
+
+<span class="kw">repositories</span> { mavenCentral() }
+
+<span class="kw">dependencies</span> {
+    <span class="cmt">// el motor que controla el navegador</span>
+    implementation <span class="str">'org.seleniumhq.selenium:selenium-java:4.27.0'</span>
+
+    <span class="cmt">// descarga automática del driver correcto</span>
+    implementation <span class="str">'io.github.bonigarcia:webdrivermanager:5.9.2'</span>
+
+    testImplementation platform(<span class="str">'org.junit:junit-bom:5.11.3'</span>)
+    testImplementation <span class="str">'org.junit.jupiter:junit-jupiter'</span>
+}
+
+<span class="kw">test</span> { useJUnitPlatform() }</pre>
+      </div>
+      <div class="analogy"><b>Analogía —</b> <code>webdrivermanager</code> es tu asistente que va a la ferretería y compra automáticamente la pieza exacta que necesitas según tu versión de Chrome instalada. <code>useJUnitPlatform()</code> es la línea que le dice a Gradle "usa JUnit 5 para correr esto" — sin ella, no sabría cómo ejecutar los tests.</div>
+    </section>
+
+    <!-- PASO 3 -->
+    <section class="step" id="s3">
+      <div class="step-head"><span class="step-num">STAGE 3</span><h2>Primer test (crudo)</h2></div>
+      <p class="desc">Sin estructura todavía — solo confirmar que la maquinaria enciende.</p>
+      <div class="codeblock">
+        <div class="fname">src/test/java/.../PrimerTest.java</div>
+        <pre><span class="kw">public class</span> PrimerTest {
+    <span class="kw">private</span> WebDriver driver;
+
+    @BeforeEach
+    <span class="kw">void</span> setUp() {
+        WebDriverManager.chromedriver().setup();
+        driver = <span class="kw">new</span> ChromeDriver();
+        driver.get(<span class="str">"https://the-internet.herokuapp.com/login"</span>);
+    }
+
+    @Test
+    <span class="kw">void</span> loginConCredencialesValidasFunciona() {
+        driver.findElement(By.id(<span class="str">"username"</span>)).sendKeys(<span class="str">"tomsmith"</span>);
+        driver.findElement(By.id(<span class="str">"password"</span>)).sendKeys(<span class="str">"SuperSecretPassword!"</span>);
+        driver.findElement(By.cssSelector(<span class="str">"button[type='submit']"</span>)).click();
+
+        String mensaje = driver.findElement(By.cssSelector(<span class="str">".flash.success"</span>)).getText();
+        assertTrue(mensaje.contains(<span class="str">"You logged into a secure area"</span>));
+    }
+
+    @AfterEach
+    <span class="kw">void</span> tearDown() { <span class="kw">if</span> (driver != <span class="kw">null</span>) driver.quit(); }
+}</pre>
+      </div>
+      <div class="codeblock">
+        <div class="fname">terminal</div>
+        <pre>./gradlew test</pre>
+      </div>
+      <div class="analogy"><b>Analogía —</b> esto es tu primera habitación funcional: sin decoración, sin planos guardados, pero ya sirve. El problema aparecerá cuando quieras construir 50 habitaciones parecidas a esta.</div>
+    </section>
+
+    <!-- PASO 4 -->
+    <section class="step" id="s4">
+      <div class="step-head"><span class="step-num">STAGE 4</span><h2>Esperas explícitas</h2></div>
+      <p class="desc">Evitamos que el test sea flaky por timing de carga.</p>
+      <div class="codeblock">
+        <div class="fname">LoginTest.java</div>
+        <pre>WebDriverWait wait = <span class="kw">new</span> WebDriverWait(driver, Duration.ofSeconds(10));
+
+wait.until(ExpectedConditions.visibilityOfElementLocated(By.id(<span class="str">"username"</span>)))
+    .sendKeys(<span class="str">"tomsmith"</span>);
+<span class="cmt">// ...</span>
+String mensaje = wait.until(ExpectedConditions.visibilityOfElementLocated(
+    By.cssSelector(<span class="str">".flash.success"</span>)
+)).getText();</pre>
+      </div>
+      <div class="analogy"><b>Analogía —</b> instalamos un sensor de movimiento en la puerta en vez de asumir a ciegas que "seguro ya está abierta". Esto es puro Selenium — no depende para nada de Gradle.</div>
+    </section>
+
+    <!-- PASO 5 -->
+    <section class="step" id="s5">
+      <div class="step-head"><span class="step-num">STAGE 5</span><h2>Refactor a Page Object Model</h2></div>
+      <p class="desc">Contratamos a un "electricista especializado" por página.</p>
+      <div class="codeblock">
+        <div class="fname">src/main/java/.../pages/LoginPage.java</div>
+        <pre><span class="kw">public class</span> LoginPage <span class="kw">extends</span> BasePage {
+    <span class="kw">private final</span> By campoUsuario = By.id(<span class="str">"username"</span>);
+    <span class="kw">private final</span> By campoClave = By.id(<span class="str">"password"</span>);
+    <span class="kw">private final</span> By botonIngresar = By.cssSelector(<span class="str">"button[type='submit']"</span>);
+    <span class="kw">private final</span> By mensajeResultado = By.cssSelector(<span class="str">".flash"</span>);
+
+    <span class="kw">public</span> LoginPage(WebDriver driver) { <span class="kw">super</span>(driver); }
+
+    <span class="kw">public void</span> navegar() {
+        driver.get(<span class="str">"https://the-internet.herokuapp.com/login"</span>);
+    }
+
+    <span class="kw">public void</span> login(String usuario, String clave) {
+        escribir(campoUsuario, usuario);
+        escribir(campoClave, clave);
+        click(botonIngresar);
+    }
+
+    <span class="kw">public</span> String obtenerMensajeResultado() {
+        <span class="kw">return</span> obtenerTexto(mensajeResultado);
+    }
+}</pre>
+      </div>
+      <div class="analogy"><b>Nota de Gradle —</b> <code>LoginPage</code> vive en <code>src/main/java</code>, no en <code>test</code>. Con el plugin <code>java</code> básico, el código de <code>main</code> es visible automáticamente desde <code>test</code> — sin configuración extra.</div>
+    </section>
+
+    <!-- PASO 6 -->
+    <section class="step" id="s6">
+      <div class="step-head"><span class="step-num">STAGE 6</span><h2>Screenshots en fallos</h2></div>
+      <p class="desc">La cámara de seguridad que solo se activa cuando salta la alarma.</p>
+      <div class="codeblock">
+        <div class="fname">utils/ScreenshotExtension.java</div>
+        <pre>@Override
+<span class="kw">public void</span> testFailed(ExtensionContext context, Throwable cause) {
+    String nombre = <span class="str">"build/screenshots/FALLO_"</span> + context.getDisplayName() + <span class="str">".png"</span>;
+    byte[] captura = ((TakesScreenshot) driver).getScreenshotAs(OutputType.BYTES);
+    Files.createDirectories(Paths.get(<span class="str">"build/screenshots"</span>));
+    Files.write(Paths.get(nombre), captura);
+}</pre>
+      </div>
+      <div class="analogy"><b>Diferencia clave con Maven —</b> la carpeta de salida es <code>build/</code>, no <code>target/</code>. Es la convención de bodega propia de Gradle.</div>
+    </section>
+
+    <!-- PASO 7 -->
+    <section class="step" id="s7">
+      <div class="step-head"><span class="step-num">STAGE 7</span><h2>Reportes con Allure</h2></div>
+      <p class="desc">El plugin oficial de Gradle simplifica lo que en Maven requería un javaagent manual.</p>
+      <div class="codeblock">
+        <div class="fname">build.gradle</div>
+        <pre><span class="kw">plugins</span> {
+    id 'java'
+    id 'io.qameta.allure' <span class="kw">version</span> <span class="str">'2.12.0'</span>
+}
+
+<span class="kw">allure</span> {
+    version = <span class="str">'2.29.0'</span>
+    useJUnit5 { version = <span class="str">'2.29.0'</span> }
+}</pre>
+      </div>
+      <div class="codeblock">
+        <div class="fname">terminal</div>
+        <pre>./gradlew test
+./gradlew allureServe</pre>
+      </div>
+      <div class="analogy"><b>Analogía —</b> es como si la ferretería te vendiera el kit de cámaras ya pre-armado, con los cables correctamente conectados de fábrica.</div>
+    </section>
+
+    <!-- PASO 8 -->
+    <section class="step" id="s8">
+      <div class="step-head"><span class="step-num">STAGE 8</span><h2>Modo headless</h2></div>
+      <p class="desc">En CI no hay pantalla — el navegador corre sin interfaz visual.</p>
+      <div class="codeblock">
+        <div class="fname">LoginTest.java</div>
+        <pre>ChromeOptions opciones = <span class="kw">new</span> ChromeOptions();
+<span class="kw">if</span> (System.getenv(<span class="str">"CI"</span>) != <span class="kw">null</span>) {
+    opciones.addArguments(<span class="str">"--headless=new"</span>);
+    opciones.addArguments(<span class="str">"--no-sandbox"</span>);
+    opciones.addArguments(<span class="str">"--disable-dev-shm-usage"</span>);
+}
+driver = <span class="kw">new</span> ChromeDriver(opciones);</pre>
+      </div>
+      <div class="analogy"><b>Analogía —</b> es la fábrica funcionando sin luces para humanos: el trabajo se hace igual, más rápido, con menos recursos.</div>
+    </section>
+
+    <!-- PASO 9 -->
+    <section class="step" id="s9">
+      <div class="step-head"><span class="step-num">STAGE 9</span><h2>GitHub Actions</h2></div>
+      <p class="desc">Conectamos la casa a la red eléctrica de la ciudad.</p>
+      <div class="codeblock">
+        <div class="fname">.github/workflows/tests.yml</div>
+        <pre><span class="tag">on</span>:
+  push: { branches: [main] }
+  pull_request: { branches: [main] }
+
+<span class="tag">jobs</span>:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-java@v4
+        with: { java-version: '17', distribution: 'temurin' }
+      - run: chmod +x ./gradlew
+      - run: ./gradlew test
+      - if: failure()
+        uses: actions/upload-artifact@v4
+        with: { name: screenshots-de-fallo, path: build/screenshots/ }</pre>
+      </div>
+      <div class="analogy"><b>Analogía —</b> a partir de ahora, cada <code>push</code> activa a un "electricista automático en la nube" que revisa toda la casa sin que tengas que estar ahí físicamente.</div>
+
+      <h3 class="sub">Maven vs Gradle — lo que cambia</h3>
+      <table class="cmp">
+        <tr><th>Aspecto</th><th>Maven</th><th>Gradle</th></tr>
+        <tr><td>Config</td><td class="m">pom.xml</td><td class="g">build.gradle</td></tr>
+        <tr><td>Comando</td><td class="m">mvn test</td><td class="g">./gradlew test</td></tr>
+        <tr><td>Salida</td><td class="m">target/</td><td class="g">build/</td></tr>
+        <tr><td>Allure</td><td class="m">javaagent manual</td><td class="g">plugin oficial</td></tr>
+      </table>
+
+      <div class="final-banner">
+        <div class="check">✓</div>
+        <h3>Pipeline completado</h3>
+        <p>El código Java es idéntico al de la versión con Maven — solo cambió la capa de build.</p>
+      </div>
+    </section>
+  </main>
+</div>
+
+<script>
+const stages = document.querySelectorAll('.stage');
+const sections = document.querySelectorAll('section.step');
+const runstatus = document.getElementById('runstatus');
+const map = {};
+stages.forEach(s => map[s.dataset.target] = s);
+
+function setStates(activeIndex){
+  stages.forEach((s, i) => {
+    s.classList.remove('active','done','running');
+    if (i < activeIndex) s.classList.add('done');
+    else if (i === activeIndex) { s.classList.add('running'); s.classList.add('active'); }
+  });
+  if (activeIndex >= stages.length - 1) {
+    runstatus.textContent = 'COMPLETADO';
+    runstatus.style.color = 'var(--accent)';
+    runstatus.style.borderColor = 'var(--accent-dim)';
+  } else {
+    runstatus.textContent = 'EN CURSO';
+  }
+}
+
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      const idx = Array.from(sections).indexOf(entry.target);
+      setStates(idx);
+    }
+  });
+}, { rootMargin: '-40% 0px -50% 0px' });
+
+sections.forEach(sec => observer.observe(sec));
+
+stages.forEach(s => {
+  s.addEventListener('click', () => {
+    document.getElementById(s.dataset.target).scrollIntoView({ behavior:'smooth', block:'start' });
+  });
+});
+
+setStates(0);
+</script>
+</body>
+</html>
