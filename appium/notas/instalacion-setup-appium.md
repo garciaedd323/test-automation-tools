@@ -140,7 +140,7 @@ appium-doctor --ios       # revisa el entorno de iOS (solo en Mac)
 
 ## 8. Diagrama del entorno completo
 
-![Diagrama de instalación y setup de Appium](instalacion-setup-appium-diagrama.svg)
+![Diagrama de instalación y setup de Appium](../recursos/capturas/instalacion-setup-appium-diagrama.svg)
 
 *(Diagrama ilustrativo: Node.js y Appium Server como base común, ramificándose hacia el kit de Android (SDK, `ANDROID_HOME`, `UiAutomator2`) y el kit de iOS (Xcode, `XCUITest`), cada uno terminando en un emulador/simulador o un dispositivo físico.)*
 
