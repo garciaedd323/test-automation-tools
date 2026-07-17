@@ -132,6 +132,7 @@ _(Pendiente)_
 
 ### `appium/notas/`
 - [¿Qué es Appium y cómo funciona?](./appium/notas/que-es-appium.md) — arquitectura cliente-servidor, el rol del Appium Server, `UiAutomator2` vs `XCUITest`, diferencia entre apps nativas/híbridas/web móvil (con cambio de contexto `NATIVE_APP`/`WEBVIEW`), y por qué Appium reutiliza el protocolo WebDriver de Selenium. Incluye analogías cotidianas (línea de atención al cliente internacional, casas locales vs prefabricadas) y diagrama de apoyo.
+- [Instalación y setup del entorno](./appium/notas/instalacion-setup-appium.md) — Node.js como base, instalación del Appium Server y drivers (`uiautomator2`, `xcuitest`), Appium Inspector, kit de Android (Android Studio, SDK, `ANDROID_HOME`), kit de iOS (Xcode, certificados, solo macOS), emuladores/simuladores vs dispositivos reales, verificación con `appium-doctor`, y errores comunes al iniciar. Incluye analogías cotidianas (taller de electricista, cursos de idiomas por país) y diagrama de apoyo.
 
 ---
 
@@ -140,7 +141,7 @@ _(Pendiente)_
 | Herramienta | Tipo | Lenguaje(s) principal(es) | Estado |
 |---|---|---|---|
 | [Selenium](./selenium) | Web (navegador) | Java, Python, JS, C# | 🟢 Completo (fundamentos + avanzado + tutorial) |
-| [Appium](./appium) | Móvil (Android/iOS) | Java, Python, JS | 🟡 En progreso (1 nota agregada) |
+| [Appium](./appium) | Móvil (Android/iOS) | Java, Python, JS | 🟡 En progreso (2 notas agregadas) |
 | [Cypress](./cypress) | Web (navegador) | JavaScript/TypeScript | 🟡 En progreso |
 | [Playwright](./playwright) | Web (navegador, multi-motor) | JS/TS, Python, .NET, Java | 🟡 En progreso |
 | [CI/CD](./ci-cd) | Integración continua | YAML / Groovy | 🟡 En progreso |
@@ -175,7 +176,7 @@ _(Pendiente)_
 - [ ] Completar `docs/conceptos-generales` (fundamentos de testing y automatización) — 7/8 notas agregadas
 - [x] Selenium: fundamentos + avanzado completos — introducción, instalación/setup, locators, Selenium Grid, esperas, interacciones con elementos, ventanas/frames, alertas de JavaScript, Page Object Model (con script end-to-end de login+assert), screenshots/evidencias, excepciones comunes, integración con test runner (JUnit 5/TestNG) y generación de reportes (Allure/Extent Reports).
 - [x] Selenium: `tutoriales/` — primer tutorial agregado (suite completa con Gradle: setup → POM → screenshots → Allure → GitHub Actions).
-- [ ] Appium: setup + primer test móvil — "¿Qué es Appium?" agregado (arquitectura cliente-servidor, tipos de app); falta instalación/setup del entorno, capabilities, locators específicos de mobile, Appium Inspector, gestos táctiles, y primer test funcional
+- [ ] Appium: setup + primer test móvil — "¿Qué es Appium?" e "Instalación y setup del entorno" agregados (arquitectura cliente-servidor, tipos de app, Node.js, drivers, Android/iOS kit, emuladores/simuladores, `appium-doctor`); falta capabilities, locators específicos de mobile, Appium Inspector en profundidad, gestos táctiles, y primer test funcional
 - [ ] Cypress: setup + primer test E2E
 - [ ] Playwright: setup + primer test
 - [ ] CI/CD: primer pipeline con GitHub Actions
