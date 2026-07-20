@@ -134,6 +134,10 @@ _(Pendiente)_
 ### `appium/notas/`
 - [¿Qué es Appium y cómo funciona?](./appium/notas/que-es-appium.md) — arquitectura cliente-servidor, el rol del Appium Server, `UiAutomator2` vs `XCUITest`, diferencia entre apps nativas/híbridas/web móvil (con cambio de contexto `NATIVE_APP`/`WEBVIEW`), y por qué Appium reutiliza el protocolo WebDriver de Selenium. Incluye analogías cotidianas (línea de atención al cliente internacional, casas locales vs prefabricadas) y diagrama de apoyo.
 - [Instalación y setup del entorno](./appium/notas/instalacion-setup-appium.md) — Node.js como base, instalación del Appium Server y drivers (`uiautomator2`, `xcuitest`), Appium Inspector, kit de Android (Android Studio, SDK, `ANDROID_HOME`), kit de iOS (Xcode, certificados, solo macOS), emuladores/simuladores vs dispositivos reales, verificación con `appium-doctor`, y errores comunes al iniciar. Incluye analogías cotidianas (taller de electricista, cursos de idiomas por país) y diagrama de apoyo.
+- [Capabilities (Desired Capabilities)](./appium/notas/capabilities-appium.md) — qué son y por qué son obligatorias desde el primer momento, `platformName`, `platformVersion`, `deviceName`, `app` vs `appPackage`/`appActivity` (Android) vs `bundleId` (iOS), `automationName`, tabla comparativa Android vs iOS, ejemplo completo lado a lado y errores comunes por capabilities mal configuradas. Incluye analogías cotidianas (formulario de reserva de hotel) y diagrama de apoyo.
+- [Appium Inspector en profundidad](./appium/notas/appium-inspector.md) — cómo conectarlo al Appium Server con las mismas capabilities, el árbol de elementos y sus atributos, tabla de confiabilidad de locators (`resource-id`/`accessibility id` vs `text` vs `bounds`), generación automática de código, interacción en vivo, diferencias Android vs iOS al inspeccionar, y errores comunes (elementos duplicados, capturas en blanco). Incluye analogías cotidianas (ficha policial de un sospechoso) y diagrama de apoyo.
+- [Locators específicos de mobile](./appium/notas/locators-mobile-appium.md) — `accessibility id` (multiplataforma), `-android uiautomator`/UiSelector, `-ios predicate string` y `-ios class chain`, por qué XPath es el último recurso en mobile, tabla comparativa de las 5 estrategias, ejemplo lado a lado del mismo botón localizado de 5 formas, y cómo se adapta el Page Object Model con locators condicionales por plataforma. Incluye analogías cotidianas (pasaporte universal vs formularios exclusivos por país) y diagrama comparativo.
+- [Gestos táctiles](./appium/notas/gestos-tactiles-appium.md) — por qué `TouchAction` está deprecado en favor de W3C Actions (`PointerInput`/`Sequence`), tap, swipe, scroll "inteligente" (`UiScrollable`), long press, y pinch/zoom con dos dedos coordinados, tabla de complejidad y errores comunes (duración insuficiente, sincronización de dedos). Incluye analogías cotidianas (tocar el timbre vs mantenerlo presionado, coreografía de baile) y diagrama de complejidad.
 
 ---
 
@@ -142,7 +146,7 @@ _(Pendiente)_
 | Herramienta | Tipo | Lenguaje(s) principal(es) | Estado |
 |---|---|---|---|
 | [Selenium](./selenium) | Web (navegador) | Java, Python, JS, C# | 🟢 Completo (fundamentos + avanzado + tutorial) |
-| [Appium](./appium) | Móvil (Android/iOS) | Java, Python, JS | 🟡 En progreso (2 notas agregadas) |
+| [Appium](./appium) | Móvil (Android/iOS) | Java, Python, JS | 🟡 En progreso (6 notas agregadas) |
 | [Cypress](./cypress) | Web (navegador) | JavaScript/TypeScript | 🟡 En progreso |
 | [Playwright](./playwright) | Web (navegador, multi-motor) | JS/TS, Python, .NET, Java | 🟡 En progreso |
 | [CI/CD](./ci-cd) | Integración continua | YAML / Groovy | 🟡 En progreso |
@@ -177,7 +181,7 @@ _(Pendiente)_
 - [ ] Completar `docs/conceptos-generales` (fundamentos de testing y automatización) — 7/8 notas agregadas
 - [x] Selenium: fundamentos + avanzado completos — introducción, instalación/setup, locators, Selenium Grid, esperas, interacciones con elementos, ventanas/frames, alertas de JavaScript, Page Object Model (con script end-to-end de login+assert), screenshots/evidencias, excepciones comunes, integración con test runner (JUnit 5/TestNG), generación de reportes (Allure/Extent Reports) y troubleshooting de Serenity+Gradle (`aggregate`).
 - [x] Selenium: `tutoriales/` — primer tutorial agregado (suite completa con Gradle: setup → POM → screenshots → Allure → GitHub Actions).
-- [ ] Appium: setup + primer test móvil — "¿Qué es Appium?" e "Instalación y setup del entorno" agregados (arquitectura cliente-servidor, tipos de app, Node.js, drivers, Android/iOS kit, emuladores/simuladores, `appium-doctor`); falta capabilities, locators específicos de mobile, Appium Inspector en profundidad, gestos táctiles, y primer test funcional
+- [ ] Appium: setup + primer test móvil — "¿Qué es Appium?", "Instalación y setup del entorno", "Capabilities", "Appium Inspector", "Locators específicos de mobile" y "Gestos táctiles" agregados; falta el primer test funcional completo (end-to-end en una app de demo)
 - [ ] Cypress: setup + primer test E2E
 - [ ] Playwright: setup + primer test
 - [ ] CI/CD: primer pipeline con GitHub Actions
