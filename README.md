@@ -8,6 +8,7 @@ Repositorio de estudio y referencia sobre **automatización de pruebas de softwa
 
 ## 📚 Tabla de contenidos
 
+- [🗺️ Por dónde empezar si eres nuevo](#️-por-dónde-empezar-si-eres-nuevo)
 - [Estructura del repositorio](#-estructura-del-repositorio)
 - [Contenido disponible](#-contenido-disponible)
 - [Herramientas cubiertas](#-herramientas-cubiertas)
@@ -15,6 +16,62 @@ Repositorio de estudio y referencia sobre **automatización de pruebas de softwa
 - [Convenciones](#-convenciones)
 - [Roadmap](#-roadmap)
 - [Recursos generales](#-recursos-generales)
+
+---
+
+## 🗺️ Por dónde empezar si eres nuevo
+
+Si nunca has hecho testing ni automatización, **no leas el repo de arriba hacia abajo** — sigue este orden. Cada nota da por hecho que ya leíste las anteriores.
+
+> 📌 **Prerequisito:** las notas de Selenium y Appium usan Java (clases, herencia, `try/catch`). Si no tienes esa base, primero busca un curso introductorio de Java — el resto del repo asume que ya sabes programar en algo orientado a objetos.
+
+### Fase 0 — Entender qué es esto antes de tocar una herramienta
+
+1. [Testing manual vs automatizado](./docs/conceptos-generales/testing-manual-vs-automatizado.md)
+2. [Tipos de pruebas](./docs/conceptos-generales/tipos-de-pruebas.md)
+3. [Pirámide de testing](./docs/conceptos-generales/piramide-de-testing.md)
+4. [Estrategia de automatización](./docs/conceptos-generales/estrategia-de-automatizacion.md)
+5. [Buenas prácticas generales](./docs/conceptos-generales/buenas-practicas-generales.md)
+6. [Glosario](./docs/conceptos-generales/glosario.md) — no lo leas de corrido, consúltalo cuando aparezca un término que no reconozcas en las fases siguientes.
+
+### Fase 1 — Selenium (la base de todo lo demás)
+
+Sigue este orden exacto — cada nota se apoya en la anterior:
+
+1. [¿Qué es Selenium?](./selenium/notas/que-es-selenium.md)
+2. [Instalación y setup](./selenium/notas/instalacion-y-setup.md)
+3. [Locators](./selenium/notas/locators.md)
+4. [Esperas en Selenium](./selenium/notas/esperas-selenium.md)
+5. [Interacciones con elementos](./selenium/notas/interacciones-elementos-selenium.md)
+6. [Ventanas, pestañas y frames/iframes](./selenium/notas/ventanas-frames-selenium-java.md)
+7. [Alertas de JavaScript](./selenium/notas/alertas-javascript-selenium-java.md)
+8. [Page Object Model](./selenium/notas/page-object-model-selenium-java.md) — aquí es donde todo empieza a "hacer clic" (sin juego de palabras)
+9. [Integración con test runner: JUnit 5 vs TestNG](./selenium/notas/test-runner-selenium-java.md)
+10. [Screenshots y evidencias](./selenium/notas/screenshots-evidencias-selenium-java.md)
+11. [Excepciones comunes](./selenium/notas/excepciones-comunes-selenium-java.md)
+12. [Generación de reportes: Allure Report y Extent Reports](./selenium/notas/reportes-selenium-java.md)
+13. 🏁 **Práctica integradora:** [Suite completa de automatización con Gradle](./selenium/tutoriales/tutorial-suite-completa-selenium-gradle.md) — el tutorial que junta todo lo anterior en un proyecto real, de principio a fin.
+
+**Opcionales (vuelve a ellas cuando las necesites, no bloquean tu avance):**
+- [Selenium 4 vs versiones anteriores](./selenium/notas/selenium-4-vs-versiones-anteriores.md) — más historia que práctica.
+- [Selenium Grid](./selenium/notas/selenium-grid.md) — solo cuando necesites correr en paralelo o multi-navegador.
+- [Serenity + Gradle: por qué el reporte solo muestra la última corrida](./selenium/notas/serenity-aggregate-reportes-selenium.md) — troubleshooting puntual, útil si usas Serenity.
+
+### Fase 2 — Appium (mobile, reutilizando lo que ya sabes de WebDriver)
+
+Si ya completaste la Fase 1, este bloque se lee mucho más rápido — Appium reutiliza casi todos los conceptos de Selenium.
+
+1. [¿Qué es Appium y cómo funciona?](./appium/notas/que-es-appium.md)
+2. [Instalación y setup del entorno](./appium/notas/instalacion-setup-appium.md)
+3. [Capabilities (Desired Capabilities)](./appium/notas/capabilities-appium.md)
+4. [Appium Inspector en profundidad](./appium/notas/appium-inspector.md)
+5. [Locators específicos de mobile](./appium/notas/locators-mobile-appium.md)
+6. [Gestos táctiles](./appium/notas/gestos-tactiles-appium.md)
+7. 🏁 **Práctica integradora:** [El primer test funcional completo](./appium/notas/primer-test-appium.md)
+
+### Fase 3+ — Cypress, Playwright y comparativas
+
+_(Se irá completando a medida que se agregue contenido de estas herramientas.)_
 
 ---
 
