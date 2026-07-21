@@ -69,9 +69,14 @@ Si ya completaste la Fase 1, este bloque se lee mucho más rápido — Appium re
 6. [Gestos táctiles](./appium/notas/gestos-tactiles-appium.md)
 7. 🏁 **Práctica integradora:** [El primer test funcional completo](./appium/notas/primer-test-appium.md)
 
-### Fase 3+ — Cypress, Playwright y comparativas
+### Fase 3 — Cypress (arquitectura distinta, aprovecha el contraste con lo anterior)
 
-_(Se irá completando a medida que se agregue contenido de estas herramientas.)_
+1. [¿Qué es Cypress y cómo funciona?](./cypress/notas/que-es-cypress.md) — léela con atención especial: la arquitectura es distinta a todo lo visto hasta ahora.
+2. _(se irá completando)_
+
+### Fase 4+ — Playwright y comparativas
+
+_(Se irá completando a medida que se agregue contenido.)_
 
 ---
 
@@ -197,6 +202,9 @@ _(Pendiente)_
 - [Gestos táctiles](./appium/notas/gestos-tactiles-appium.md) — por qué `TouchAction` está deprecado en favor de W3C Actions (`PointerInput`/`Sequence`), tap, swipe, scroll "inteligente" (`UiScrollable`), long press, y pinch/zoom con dos dedos coordinados, tabla de complejidad y errores comunes (duración insuficiente, sincronización de dedos). Incluye analogías cotidianas (tocar el timbre vs mantenerlo presionado, coreografía de baile) y diagrama de complejidad.
 - [El primer test funcional completo](./appium/notas/primer-test-appium.md) — flujo end-to-end real: capabilities apuntando a una app de demo (ApiDemos/UICatalog), uso del Inspector para sacar locators reales, interacción combinando locators y gestos, assert final, todo envuelto en Page Object Model, y fixtures de JUnit para el setup/teardown de la sesión. Incluye analogías cotidianas (aprender a manejar en un circuito cerrado) y diagrama del flujo completo.
 
+### `cypress/notas/`
+- [¿Qué es Cypress y cómo funciona?](./cypress/notas/que-es-cypress.md) — la diferencia arquitectónica clave frente a Selenium/Appium (no usa WebDriver, corre dentro del navegador), el proceso de Node.js detrás de bambalinas, por qué es tan rápido, la limitación de multi-dominio derivada de este diseño, y tabla comparativa directa con Selenium/Appium. Incluye analogías cotidianas (obrero parado en la obra vs operador de grúa a distancia) y diagrama de arquitectura.
+
 ---
 
 ## 🛠 Herramientas cubiertas
@@ -205,7 +213,7 @@ _(Pendiente)_
 |---|---|---|---|
 | [Selenium](./selenium) | Web (navegador) | Java, Python, JS, C# | 🟢 Completo (fundamentos + avanzado + tutorial) |
 | [Appium](./appium) | Móvil (Android/iOS) | Java, Python, JS | 🟢 Completo (fundamentos) |
-| [Cypress](./cypress) | Web (navegador) | JavaScript/TypeScript | 🟡 En progreso |
+| [Cypress](./cypress) | Web (navegador) | JavaScript/TypeScript | 🟡 En progreso (1 nota agregada) |
 | [Playwright](./playwright) | Web (navegador, multi-motor) | JS/TS, Python, .NET, Java | 🟡 En progreso |
 | [CI/CD](./ci-cd) | Integración continua | YAML / Groovy | 🟡 En progreso |
 
@@ -240,7 +248,7 @@ _(Pendiente)_
 - [x] Selenium: fundamentos + avanzado completos — introducción, instalación/setup, locators, Selenium Grid, esperas, interacciones con elementos, ventanas/frames, alertas de JavaScript, Page Object Model (con script end-to-end de login+assert), screenshots/evidencias, excepciones comunes, integración con test runner (JUnit 5/TestNG), generación de reportes (Allure/Extent Reports) y troubleshooting de Serenity+Gradle (`aggregate`).
 - [x] Selenium: `tutoriales/` — primer tutorial agregado (suite completa con Gradle: setup → POM → screenshots → Allure → GitHub Actions).
 - [x] Appium: fundamentos completos — "¿Qué es Appium?", instalación/setup del entorno, capabilities, Appium Inspector, locators específicos de mobile, gestos táctiles, y el primer test funcional completo (end-to-end en app de demo con Page Object Model). Pendiente para más adelante: testing cross-platform, Appium + CI/CD, y device farms en la nube.
-- [ ] Cypress: setup + primer test E2E
+- [ ] Cypress: setup + primer test E2E — "¿Qué es Cypress?" agregado (arquitectura sin WebDriver, corre dentro del navegador); falta instalación/setup, anatomía de un test, selectors, comandos/aserciones, `cy.intercept`, y primer test funcional
 - [ ] Playwright: setup + primer test
 - [ ] CI/CD: primer pipeline con GitHub Actions
 - [ ] `docs/comparativas`: tabla comparativa Selenium vs Playwright vs Cypress
