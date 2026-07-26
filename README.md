@@ -75,7 +75,8 @@ Si ya completaste la Fase 1, este bloque se lee mucho más rápido — Appium re
 2. [Instalación y setup](./cypress/notas/instalacion-setup-cypress.md)
 3. [Anatomía de un test en Cypress](./cypress/notas/anatomia-test-cypress.md)
 4. [Selectors y buenas prácticas de selección](./cypress/notas/selectors-cypress.md)
-5. _(se irá completando)_
+5. [Reintentos automáticos (retry-ability)](./cypress/notas/retry-ability-cypress.md)
+6. _(se irá completando)_
 
 ### Fase 4+ — Playwright y comparativas
 
@@ -210,6 +211,7 @@ _(Pendiente)_
 - [Instalación y setup](./cypress/notas/instalacion-setup-cypress.md) — instalación con `npm install cypress`, la estructura de carpetas autogenerada (`e2e/`, `fixtures/`, `support/`), `cypress.config.js` como panel de control central (`baseUrl`, viewport, timeouts), modo interactivo vs modo headless, soporte de TypeScript de fábrica, y tabla comparativa de instalación con Selenium/Appium. Incluye analogías cotidianas (electrodoméstico todo-en-uno, horno de puerta de vidrio) y diagrama de apoyo.
 - [Anatomía de un test en Cypress](./cypress/notas/anatomia-test-cypress.md) — estructura `describe`/`it`, fixtures del ciclo de vida (`before`/`beforeEach`/`afterEach`/`after`) y su equivalencia con JUnit 5, el objeto global `cy`, comandos encadenados y por qué no son promesas tradicionales de JavaScript, aserciones integradas con Chai (`should`), y tabla comparativa completa con Selenium+JUnit. Incluye analogías cotidianas (capítulos de un libro, mensajero con un paquete) y diagrama de la jerarquía completa.
 - [Selectors y buenas prácticas de selección](./cypress/notas/selectors-cypress.md) — la jerarquía oficial de Cypress (`data-cy` > `data-testid` > `role`/`name` > clases/IDs > texto visible > posición en el DOM), por qué usar un atributo exclusivo de testing, cómo pedirle esto al equipo de desarrollo, y tabla resumen de confiabilidad. Incluye analogías cotidianas (gafete "solo para auditoría", marca de ropa vs identidad) y diagrama comparativo.
+- [Reintentos automáticos (retry-ability)](./cypress/notas/retry-ability-cypress.md) — qué significa retry-ability y por qué reemplaza a `WebDriverWait`, qué comandos reintentan (`get`, `contains`, `should`) y cuáles no (`click`, `request`), configuración de timeouts (global y por comando), el antipatrón de `cy.wait(tiempo fijo)`, y tabla comparativa con Selenium. Incluye analogías cotidianas (tocar la puerta de un vecino con paciencia) y diagrama comparativo.
 
 ---
 
@@ -219,7 +221,7 @@ _(Pendiente)_
 |---|---|---|---|
 | [Selenium](./selenium) | Web (navegador) | Java, Python, JS, C# | 🟢 Completo (fundamentos + avanzado + tutorial) |
 | [Appium](./appium) | Móvil (Android/iOS) | Java, Python, JS | 🟢 Completo (fundamentos) |
-| [Cypress](./cypress) | Web (navegador) | JavaScript/TypeScript | 🟡 En progreso (4 notas agregadas) |
+| [Cypress](./cypress) | Web (navegador) | JavaScript/TypeScript | 🟡 En progreso (5 notas agregadas) |
 | [Playwright](./playwright) | Web (navegador, multi-motor) | JS/TS, Python, .NET, Java | 🟡 En progreso |
 | [CI/CD](./ci-cd) | Integración continua | YAML / Groovy | 🟡 En progreso |
 
@@ -254,7 +256,7 @@ _(Pendiente)_
 - [x] Selenium: fundamentos + avanzado completos — introducción, instalación/setup, locators, Selenium Grid, esperas, interacciones con elementos, ventanas/frames, alertas de JavaScript, Page Object Model (con script end-to-end de login+assert), screenshots/evidencias, excepciones comunes, integración con test runner (JUnit 5/TestNG), generación de reportes (Allure/Extent Reports) y troubleshooting de Serenity+Gradle (`aggregate`).
 - [x] Selenium: `tutoriales/` — primer tutorial agregado (suite completa con Gradle: setup → POM → screenshots → Allure → GitHub Actions).
 - [x] Appium: fundamentos completos — "¿Qué es Appium?", instalación/setup del entorno, capabilities, Appium Inspector, locators específicos de mobile, gestos táctiles, y el primer test funcional completo (end-to-end en app de demo con Page Object Model). Pendiente para más adelante: testing cross-platform, Appium + CI/CD, y device farms en la nube.
-- [ ] Cypress: setup + primer test E2E — "¿Qué es Cypress?", "Instalación y setup", "Anatomía de un test" y "Selectors" agregados; falta comandos/aserciones en profundidad, reintentos automáticos, `cy.intercept`, y primer test funcional
+- [ ] Cypress: setup + primer test E2E — "¿Qué es Cypress?", "Instalación y setup", "Anatomía de un test", "Selectors" y "Retry-ability" agregados; falta comandos/aserciones en profundidad, `cy.intercept`, y primer test funcional
 - [ ] Playwright: setup + primer test
 - [ ] CI/CD: primer pipeline con GitHub Actions
 - [ ] `docs/comparativas`: tabla comparativa Selenium vs Playwright vs Cypress
