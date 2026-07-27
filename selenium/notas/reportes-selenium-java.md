@@ -181,7 +181,7 @@ Esto abre un servidor local con el reporte interactivo: gráfico de tendencias, 
 
 ## 3. Diagrama comparativo
 
-![Diagrama comparativo de reportes](reportes_diagrama.svg)
+![Diagrama comparativo de reportes](../recursos/capturas/reportes_diagrama.svg)
 
 *(Diagrama ilustrativo: del recibo simple de Surefire, al reporte HTML navegable, hasta el reporte interactivo de Allure con pasos, capturas y tendencias históricas.)*
 

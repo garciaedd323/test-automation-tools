@@ -212,7 +212,7 @@ public class LoginTestNG {
 
 ## 4. Diagrama: qué le aporta el test runner a Selenium
 
-![Diagrama de integración con test runner](test_runner_diagrama.svg)
+![Diagrama de integración con test runner](../recursos/capturas/test_runner_diagrama.svg)
 
 *(Diagrama ilustrativo: Selenium por sí solo solo abre el navegador y hace clics; el test runner añade fixtures, asserts, organización y reportes alrededor de esas acciones.)*
 

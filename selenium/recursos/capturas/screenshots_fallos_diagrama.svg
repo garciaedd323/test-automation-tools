@@ -1,0 +1,30 @@
+<svg width="680" height="200" viewBox="0 0 680 200" xmlns="http://www.w3.org/2000/svg" role="img">
+<title>Flujo de captura automática de screenshots en fallos</title>
+<desc>Diagrama que muestra cómo el test corre con normalidad, y si algo falla, el TestWatcher se activa automáticamente y guarda la captura con nombre y timestamp, sin que el test tenga que pedirlo explícitamente.</desc>
+<defs>
+<marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M2 1L8 5L2 9" fill="none" stroke="#5f5e5a" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></marker>
+</defs>
+
+<rect x="0" y="0" width="680" height="200" fill="#ffffff"/>
+
+<line x1="180" y1="68" x2="228" y2="68" stroke="#5f5e5a" stroke-width="1.5" marker-end="url(#arrow)"/>
+<line x1="400" y1="68" x2="448" y2="68" stroke="#5f5e5a" stroke-width="1.5" marker-end="url(#arrow)"/>
+
+<g>
+  <rect x="20" y="40" width="160" height="56" rx="8" fill="#F1EFE8" stroke="#5F5E5A" stroke-width="0.5"/>
+  <text x="100" y="58" text-anchor="middle" dominant-baseline="central" font-family="Arial, sans-serif" font-size="14" font-weight="600" fill="#2C2C2A">Test corre</text>
+  <text x="100" y="76" text-anchor="middle" dominant-baseline="central" font-family="Arial, sans-serif" font-size="12" fill="#5F5E5A">Flujo normal</text>
+</g>
+
+<g>
+  <rect x="230" y="40" width="170" height="56" rx="8" fill="#FAECE7" stroke="#993C1D" stroke-width="0.5"/>
+  <text x="315" y="58" text-anchor="middle" dominant-baseline="central" font-family="Arial, sans-serif" font-size="14" font-weight="600" fill="#4A1B0C">Algo falla</text>
+  <text x="315" y="76" text-anchor="middle" dominant-baseline="central" font-family="Arial, sans-serif" font-size="12" fill="#993C1D">Excepción o assert</text>
+</g>
+
+<g>
+  <rect x="450" y="40" width="210" height="56" rx="8" fill="#EEEDFE" stroke="#534AB7" stroke-width="0.5"/>
+  <text x="555" y="58" text-anchor="middle" dominant-baseline="central" font-family="Arial, sans-serif" font-size="14" font-weight="600" fill="#26215C">TestWatcher se activa</text>
+  <text x="555" y="76" text-anchor="middle" dominant-baseline="central" font-family="Arial, sans-serif" font-size="12" fill="#3C3489">Guarda captura + timestamp</text>
+</g>
+</svg>

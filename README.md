@@ -50,12 +50,12 @@ Sigue este orden exacto — cada nota se apoya en la anterior:
 10. [Screenshots y evidencias](./selenium/notas/screenshots-evidencias-selenium-java.md)
 11. [Excepciones comunes](./selenium/notas/excepciones-comunes-selenium-java.md)
 12. [Generación de reportes: Allure Report y Extent Reports](./selenium/notas/reportes-selenium-java.md)
-13. 🏁 **Práctica integradora:** [Suite completa de automatización con Gradle](./selenium/tutoriales/tutorial-suite-completa-selenium-gradle.md) — el tutorial que junta todo lo anterior en un proyecto real, de principio a fin.
+13. 🏁 **Práctica integradora:** [Suite completa de automatización con Gradle](./selenium/tutoriales/tutorial_suite_completa_selenium_gradle.md) — el tutorial que junta todo lo anterior en un proyecto real, de principio a fin.
 
 **Opcionales (vuelve a ellas cuando las necesites, no bloquean tu avance):**
 - [Selenium 4 vs versiones anteriores](./selenium/notas/selenium-4-vs-versiones-anteriores.md) — más historia que práctica.
 - [Selenium Grid](./selenium/notas/selenium-grid.md) — solo cuando necesites correr en paralelo o multi-navegador.
-- [Serenity + Gradle: por qué el reporte solo muestra la última corrida](./selenium/notas/serenity-aggregate-reportes-selenium.md) — troubleshooting puntual, útil si usas Serenity.
+- [Serenity + Gradle: por qué el reporte solo muestra la última corrida](./selenium/notas/explicacion-aggregate-serenity.md) — troubleshooting puntual, útil si usas Serenity.
 
 ### Fase 2 — Appium (mobile, reutilizando lo que ya sabes de WebDriver)
 
@@ -192,10 +192,10 @@ _(Pendiente)_
 - [Excepciones comunes (Java)](./selenium/notas/excepciones-comunes-selenium-java.md) — `NoSuchElementException`, `StaleElementReferenceException` y `TimeoutException`: qué significan, causas típicas, cómo depurarlas paso a paso, patrón de reintento ante staleness, tabla resumen de diagnóstico rápido y errores de principiante que agravan estas excepciones. Incluye diagrama comparativo.
 - [Integración con test runner: JUnit 5 vs TestNG (Java)](./selenium/notas/test-runner-selenium-java.md) — qué le falta a Selenium sin un test runner, fixtures (`@BeforeEach`/`@AfterEach` vs `@BeforeMethod`/`@AfterMethod`), asserts, tests parametrizados (`@CsvSource` / `@DataProvider`), agrupar/filtrar con `@Tag`/`groups`, dependencias entre tests (`dependsOnMethods`), tabla comparativa JUnit 5 vs TestNG y buenas prácticas. Incluye diagrama de apoyo.
 - [Generación de reportes: Allure Report y Extent Reports (Java)](./selenium/notas/reportes-selenium-java.md) — reporte básico de Surefire/Maven, configuración de Allure (`@Step`, `@Severity`, adjuntar screenshots y HTML automáticamente, categorización de fallos), alternativa con Extent Reports, tabla comparativa Surefire vs Allure vs Extent Reports y buenas prácticas para reportes útiles. Incluye diagrama comparativo.
-- [Serenity + Gradle: por qué el reporte solo muestra la última corrida](./selenium/notas/serenity-aggregate-reportes-selenium.md) — comportamiento de `test.finalizedBy(aggregate)` en Gradle, diferencia entre correr `test --tests X` (reporte parcial, solo esa sesión) vs `aggregate` solo (relee todos los JSON acumulados y arma el reporte completo), y flujo recomendado para correr múltiples carpetas de tests sin perder histórico visual. Incluye analogías cotidianas (álbum de fotos reveladas, resumen bancario) y tabla de comandos.
+- [Serenity + Gradle: por qué el reporte solo muestra la última corrida](./selenium/notas/explicacion-aggregate-serenity.md) — comportamiento de `test.finalizedBy(aggregate)` en Gradle, diferencia entre correr `test --tests X` (reporte parcial, solo esa sesión) vs `aggregate` solo (relee todos los JSON acumulados y arma el reporte completo), y flujo recomendado para correr múltiples carpetas de tests sin perder histórico visual. Incluye analogías cotidianas (álbum de fotos reveladas, resumen bancario) y tabla de comandos.
 
 ### `selenium/tutoriales/`
-- [Suite completa de automatización con Gradle](./selenium/tutoriales/tutorial-suite-completa-selenium-gradle.md) — recorrido paso a paso end-to-end: setup del proyecto con `gradle init`, primer test crudo, esperas explícitas, refactor a Page Object Model, screenshots automáticos en fallos, reportes con Allure (plugin oficial de Gradle), modo headless, y pipeline de GitHub Actions. Incluye tabla comparativa Maven vs Gradle y diagrama del flujo completo.
+- [Suite completa de automatización con Gradle](./selenium/tutoriales/tutorial_suite_completa_selenium_gradle.md) — recorrido paso a paso end-to-end: setup del proyecto con `gradle init`, primer test crudo, esperas explícitas, refactor a Page Object Model, screenshots automáticos en fallos, reportes con Allure (plugin oficial de Gradle), modo headless, y pipeline de GitHub Actions. Incluye tabla comparativa Maven vs Gradle y diagrama del flujo completo.
   - 🖥️ [Versión interactiva (HTML)](./selenium/tutoriales/tutorial-suite-completa-selenium-gradle.html) — mismo contenido en formato de pipeline visual navegable, con sidebar tipo stepper de CI que resalta la etapa activa al hacer scroll.
 
 ### `appium/notas/`

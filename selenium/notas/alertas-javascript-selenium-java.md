@@ -86,7 +86,7 @@ alerta.accept();
 
 ## 5. Diagrama del concepto
 
-![Diagrama de manejo de alertas de JavaScript](alertas_javascript_diagrama.svg)
+![Diagrama de manejo de alertas de JavaScript](../recursos/capturas/alertas_javascript_diagrama.svg)
 
 *(Diagrama ilustrativo: el botón "Eliminar registro" dispara el `confirm()`. Mientras la alerta está abierta, el resto de la página queda bloqueado — no se puede interactuar con nada más hasta atenderla con `accept()` o `dismiss()`.)*
 

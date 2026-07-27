@@ -549,7 +549,7 @@ jobs:
 
 ## Diagrama del flujo completo
 
-![Diagrama del flujo completo de la suite de automatización con Gradle](suite_completa_gradle_diagrama.svg)
+![Diagrama del flujo completo de la suite de automatización con Gradle](../recursos/capturas/suite_completa_gradle_diagrama.svg)
 
 *(Diagrama ilustrativo: el mismo recorrido de siempre — setup, primer test, POM, evidencia/reportes, CI — mostrando en cada paso qué cambia específicamente al usar Gradle en vez de Maven.)*
 

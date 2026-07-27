@@ -238,7 +238,7 @@ Fíjate qué tan legible es el test: **se lee casi como una historia en español
 
 ## 4. Diagrama del flujo
 
-![Diagrama de Page Object Model](pom_diagrama.svg)
+![Diagrama de Page Object Model](../recursos/capturas/pom_diagrama.svg)
 
 *(Diagrama ilustrativo: el test solo conoce los "Page Objects", nunca los locators directamente. `LoginPage.clickIngresar()` retorna un `DashboardPage`, modelando la navegación real entre páginas.)*
 

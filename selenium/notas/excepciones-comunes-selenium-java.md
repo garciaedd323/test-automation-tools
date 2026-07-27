@@ -139,7 +139,7 @@ try {
 
 ## 4. Diagrama comparativo
 
-![Diagrama de excepciones comunes de Selenium](excepciones_selenium_diagrama.svg)
+![Diagrama de excepciones comunes de Selenium](../recursos/capturas/excepciones_selenium_diagrama.svg)
 
 *(Diagrama ilustrativo: las tres excepciones representadas como situaciones de la vida cotidiana — la carta que nunca existió, la butaca reubicada, y el bus que no llegó a tiempo.)*
 

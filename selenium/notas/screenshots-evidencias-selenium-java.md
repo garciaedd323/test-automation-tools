@@ -124,7 +124,7 @@ public class LoginTest {
 
 ## 3. Diagrama del flujo
 
-![Diagrama de captura automática de screenshots en fallos](screenshots_fallos_diagrama.svg)
+![Diagrama de captura automática de screenshots en fallos](../recursos/capturas/screenshots_fallos_diagrama.svg)
 
 *(Diagrama ilustrativo: el test corre con normalidad; si algo falla, el "sensor" (`TestWatcher`) se activa automáticamente y guarda la captura con nombre y timestamp, sin que el test tenga que pedirlo explícitamente.)*
 

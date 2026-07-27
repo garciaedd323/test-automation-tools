@@ -1,0 +1,26 @@
+<svg width="680" height="200" viewBox="0 0 680 200" xmlns="http://www.w3.org/2000/svg" role="img">
+<title>Comparación de las tres excepciones comunes de Selenium</title>
+<desc>Diagrama que compara NoSuchElementException (el elemento nunca existió), StaleElementReferenceException (el elemento existía pero el DOM cambió) y TimeoutException (el elemento llegó tarde), cada una con su analogía cotidiana.</desc>
+
+<rect x="0" y="0" width="680" height="200" fill="#ffffff"/>
+
+<g>
+  <rect x="20" y="40" width="200" height="56" rx="8" fill="#FAECE7" stroke="#993C1D" stroke-width="0.5"/>
+  <text x="120" y="58" text-anchor="middle" dominant-baseline="central" font-family="Arial, sans-serif" font-size="13" font-weight="600" fill="#4A1B0C">NoSuchElementException</text>
+  <text x="120" y="76" text-anchor="middle" dominant-baseline="central" font-family="Arial, sans-serif" font-size="12" fill="#993C1D">La carta que nunca existió</text>
+</g>
+
+<g>
+  <rect x="240" y="40" width="200" height="56" rx="8" fill="#FAEEDA" stroke="#854F0B" stroke-width="0.5"/>
+  <text x="340" y="58" text-anchor="middle" dominant-baseline="central" font-family="Arial, sans-serif" font-size="12" font-weight="600" fill="#412402">StaleElementReferenceException</text>
+  <text x="340" y="76" text-anchor="middle" dominant-baseline="central" font-family="Arial, sans-serif" font-size="12" fill="#854F0B">La butaca reubicada</text>
+</g>
+
+<g>
+  <rect x="460" y="40" width="200" height="56" rx="8" fill="#F1EFE8" stroke="#5F5E5A" stroke-width="0.5"/>
+  <text x="560" y="58" text-anchor="middle" dominant-baseline="central" font-family="Arial, sans-serif" font-size="14" font-weight="600" fill="#2C2C2A">TimeoutException</text>
+  <text x="560" y="76" text-anchor="middle" dominant-baseline="central" font-family="Arial, sans-serif" font-size="12" fill="#5F5E5A">El bus que no llegó a tiempo</text>
+</g>
+
+<text x="340" y="130" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" fill="#5F5E5A">Cada una responde a una pregunta distinta: ¿existe? ¿sigue existiendo? ¿llegó a tiempo?</text>
+</svg>
