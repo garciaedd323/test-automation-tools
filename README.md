@@ -82,7 +82,8 @@ Si ya completaste la Fase 1, este bloque se lee mucho más rápido — Appium re
 ### Fase 4 — Playwright (la síntesis de todo lo anterior)
 
 1. [¿Qué es Playwright y cómo funciona?](./playwright/notas/que-es-playwright.md) — se lee más rápido si ya se completaron las Fases 1 y 3, porque compara constantemente con Selenium y Cypress.
-2. _(se irá completando)_
+2. [Instalación y setup](./playwright/notas/instalacion-setup-playwright.md)
+3. _(se irá completando)_
 
 ### Fase 5+ — Comparativas finales
 
@@ -223,6 +224,7 @@ _(Pendiente)_
 
 ### `playwright/notas/`
 - [¿Qué es Playwright y cómo funciona?](./playwright/notas/que-es-playwright.md) — arquitectura híbrida (corre fuera del navegador como Selenium, pero se comunica por CDP directo en vez de WebDriver), instalación automática de los tres motores de navegador (Chromium, Firefox, WebKit), `BrowserContext` para multi-pestaña/multi-sesión sin la limitación de dominio de Cypress, soporte multi-lenguaje, y tabla comparativa completa con Selenium y Cypress. Incluye analogías cotidianas (especialista de mantenimiento con llaves maestras) y diagrama de arquitectura.
+- [Instalación y setup](./playwright/notas/instalacion-setup-playwright.md) — `npm init playwright@latest` y las 4 preguntas interactivas explicadas a fondo (TypeScript vs JavaScript, carpeta de tests, workflow de GitHub Actions, instalar navegadores ahora), estructura autogenerada con CI incluido, `playwright.config.ts` con soporte multi-proyecto nativo, modo headless/headed/`--ui`, y tabla comparativa de instalación con Selenium y Cypress. Incluye analogías cotidianas (electrodoméstico con tres motores de fábrica) y diagrama de apoyo.
 
 ---
 
@@ -233,7 +235,7 @@ _(Pendiente)_
 | [Selenium](./selenium) | Web (navegador) | Java, Python, JS, C# | 🟢 Completo (fundamentos + avanzado + tutorial) |
 | [Appium](./appium) | Móvil (Android/iOS) | Java, Python, JS | 🟢 Completo (fundamentos) |
 | [Cypress](./cypress) | Web (navegador) | JavaScript/TypeScript | 🟢 Completo (fundamentos) |
-| [Playwright](./playwright) | Web (navegador, multi-motor) | JS/TS, Python, .NET, Java | 🟡 En progreso (1 nota agregada) |
+| [Playwright](./playwright) | Web (navegador, multi-motor) | JS/TS, Python, .NET, Java | 🟡 En progreso (2 notas agregadas) |
 | [CI/CD](./ci-cd) | Integración continua | YAML / Groovy | 🟡 En progreso |
 
 **Leyenda:** 🟢 Completo · 🟡 En progreso · 🔴 Pendiente
@@ -268,7 +270,7 @@ _(Pendiente)_
 - [x] Selenium: `tutoriales/` — primer tutorial agregado (suite completa con Gradle: setup → POM → screenshots → Allure → GitHub Actions).
 - [x] Appium: fundamentos completos — "¿Qué es Appium?", instalación/setup del entorno, capabilities, Appium Inspector, locators específicos de mobile, gestos táctiles, y el primer test funcional completo (end-to-end en app de demo con Page Object Model). Pendiente para más adelante: testing cross-platform, Appium + CI/CD, y device farms en la nube.
 - [x] Cypress: fundamentos completos — "¿Qué es Cypress?", instalación/setup, anatomía de un test, selectors, retry-ability, `cy.intercept`, y el primer test funcional completo (end-to-end de login con Page Object Model y fixtures). Pendiente para más adelante: custom commands, Cypress + CI/CD, y Component Testing.
-- [ ] Playwright: setup + primer test — "¿Qué es Playwright?" agregado (arquitectura híbrida CDP, multi-navegador, BrowserContext); falta instalación/setup, anatomía de un test, locators, auto-waiting, `page.route`, y primer test funcional
+- [ ] Playwright: setup + primer test — "¿Qué es Playwright?" e "Instalación y setup" agregados; falta anatomía de un test, locators, auto-waiting, `page.route`, y primer test funcional
 - [ ] CI/CD: primer pipeline con GitHub Actions
 - [ ] `docs/comparativas`: tabla comparativa Selenium vs Playwright vs Cypress
 
