@@ -71,6 +71,8 @@ Si ya completaste la Fase 1, este bloque se lee mucho más rápido — Appium re
 6. [Gestos táctiles](./appium/notas/gestos-tactiles-appium.md)
 7. 🏁 **Práctica integradora:** [El primer test funcional completo](./appium/notas/primer-test-appium.md)
 
+**🎯 Ahora practica por tu cuenta:** [4 ejercicios progresivos](./appium/ejercicios/) (básico → avanzado), usando Sauce Labs "My Demo App" — pide confirmar los locators reales con Appium Inspector en cada uno.
+
 ### Fase 3 — Cypress (arquitectura distinta, aprovecha el contraste con lo anterior)
 
 1. [¿Qué es Cypress y cómo funciona?](./cypress/notas/que-es-cypress.md) — léela con atención especial: la arquitectura es distinta a todo lo visto hasta ahora.
@@ -119,7 +121,8 @@ automatizacion-pruebas/
 ├── appium/
 │   ├── notas/
 │   ├── recursos/
-│   └── tutoriales/
+│   ├── tutoriales/
+│   └── ejercicios/
 ├── cypress/
 │   ├── notas/
 │   ├── recursos/
@@ -160,6 +163,7 @@ graph TD
     APP --> APP_NOTAS["notas"]
     APP --> APP_RECURSOS["recursos (prompts, capturas)"]
     APP --> APP_TUT["tutoriales"]
+    APP --> APP_EJERCICIOS["ejercicios 🎯"]
 
     ROOT --> CYP["📁 cypress"]
     CYP --> CYP_NOTAS["notas"]
@@ -238,6 +242,16 @@ Retos prácticos con dificultad progresiva, usando apps reales gratuitas ([the-i
 - [Locators específicos de mobile](./appium/notas/locators-mobile-appium.md) — `accessibility id` (multiplataforma), `-android uiautomator`/UiSelector, `-ios predicate string` y `-ios class chain`, por qué XPath es el último recurso en mobile, tabla comparativa de las 5 estrategias, ejemplo lado a lado del mismo botón localizado de 5 formas, y cómo se adapta el Page Object Model con locators condicionales por plataforma. Incluye analogías cotidianas (pasaporte universal vs formularios exclusivos por país) y diagrama comparativo.
 - [Gestos táctiles](./appium/notas/gestos-tactiles-appium.md) — por qué `TouchAction` está deprecado en favor de W3C Actions (`PointerInput`/`Sequence`), tap, swipe, scroll "inteligente" (`UiScrollable`), long press, y pinch/zoom con dos dedos coordinados, tabla de complejidad y errores comunes (duración insuficiente, sincronización de dedos). Incluye analogías cotidianas (tocar el timbre vs mantenerlo presionado, coreografía de baile) y diagrama de complejidad.
 - [El primer test funcional completo](./appium/notas/primer-test-appium.md) — flujo end-to-end real: capabilities apuntando a una app de demo (ApiDemos/UICatalog), uso del Inspector para sacar locators reales, interacción combinando locators y gestos, assert final, todo envuelto en Page Object Model, y fixtures de JUnit para el setup/teardown de la sesión. Incluye analogías cotidianas (aprender a manejar en un circuito cerrado) y diagrama del flujo completo.
+
+### `appium/ejercicios/` 🎯
+Retos prácticos con dificultad progresiva, usando [Sauce Labs "My Demo App"](https://github.com/saucelabs/my-demo-app-android/releases) (Android) — una app de catálogo de productos mantenida oficialmente para practicar automatización mobile. Cada reto pide confirmar los locators reales con Appium Inspector antes de codificar, reforzando esa habilidad en vez de solo copiar código.
+
+| # | Ejercicio | Nivel | Enfoque |
+|---|---|---|---|
+| 01 | [Capabilities y tu primer tap](./appium/ejercicios/01-capabilities-y-tap.md) | 🟢 Básico | Capabilities, espera explícita, tap |
+| 02 | [UiSelector y agregar al carrito](./appium/ejercicios/02-uiselector-carrito.md) | 🟡 Intermedio | `UiSelector`, `UiScrollable`, assert de contador |
+| 03 | [Swipe para eliminar del carrito](./appium/ejercicios/03-swipe-carrito.md) | 🟡🔴 Intermedio-avanzado | Gestos táctiles, coordenadas dinámicas |
+| 04 | [Login con Page Object Model](./appium/ejercicios/04-login-page-object.md) | 🔴 Avanzado | POM completo, JUnit 5, múltiples escenarios |
 
 ### `cypress/notas/`
 - [¿Qué es Cypress y cómo funciona?](./cypress/notas/que-es-cypress.md) — la diferencia arquitectónica clave frente a Selenium/Appium (no usa WebDriver, corre dentro del navegador), el proceso de Node.js detrás de bambalinas, por qué es tan rápido, la limitación de multi-dominio derivada de este diseño, y tabla comparativa directa con Selenium/Appium. Incluye analogías cotidianas (obrero parado en la obra vs operador de grúa a distancia) y diagrama de arquitectura.
@@ -322,7 +336,7 @@ Retos prácticos con dificultad progresiva, usando las mismas apps reales gratui
 - [x] Selenium: `ejercicios/` — 4 ejercicios progresivos agregados (locators/clic → checkboxes/dropdown → login con esperas → carrito con POM), con pistas colapsables y solución para autoevaluación.
 - [x] Cypress: `ejercicios/` — 4 ejercicios progresivos agregados (selectors/assert → retry-ability con contenido dinámico → cy.intercept con la app oficial de ejemplos → carrito con Page Object y fixtures).
 - [x] Playwright: `ejercicios/` — 4 ejercicios progresivos agregados (getByRole básico → auto-waiting con contenido dinámico → page.route → carrito con Page Object, fixtures y multi-navegador).
-- [ ] Appium: `ejercicios/` — pendiente; requiere decidir cómo dar acceso a un emulador/app de demo antes de poder proponer retos prácticos.
+- [x] Appium: `ejercicios/` — 4 ejercicios progresivos agregados (capabilities/tap → UiSelector/carrito → swipe → login con Page Object Model), usando Sauce Labs "My Demo App". ⚠️ Los locators de ejemplo en las soluciones son ilustrativos — se recomienda verificarlos con Appium Inspector contra la versión real de la app antes de publicar.
 - [x] Appium: fundamentos completos — "¿Qué es Appium?", instalación/setup del entorno, capabilities, Appium Inspector, locators específicos de mobile, gestos táctiles, y el primer test funcional completo (end-to-end en app de demo con Page Object Model). Pendiente para más adelante: testing cross-platform, Appium + CI/CD, y device farms en la nube.
 - [x] Cypress: fundamentos completos — "¿Qué es Cypress?", instalación/setup, anatomía de un test, selectors, retry-ability, `cy.intercept`, y el primer test funcional completo (end-to-end de login con Page Object Model y fixtures). Pendiente para más adelante: custom commands, Cypress + CI/CD, y Component Testing.
 - [x] Playwright: fundamentos completos — "¿Qué es Playwright?", instalación/setup, anatomía de un test, locators por accesibilidad, auto-waiting, `page.route`, y el primer test funcional completo (end-to-end con Page Object Model, fixtures personalizadas, y ejecución multi-navegador). Pendiente para más adelante: Trace Viewer, Playwright + CI/CD, y testing de componentes.
