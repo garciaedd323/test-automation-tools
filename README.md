@@ -98,9 +98,15 @@ Si ya completaste la Fase 1, este bloque se lee mucho más rápido — Appium re
 
 **🎯 Ahora practica por tu cuenta:** [4 ejercicios progresivos](./playwright/ejercicios/) (básico → avanzado) — varios reutilizan el mismo escenario que ya resolviste en Selenium/Cypress, para comparar la sintaxis directamente.
 
-### Fase 5+ — Comparativas finales
+### Fase 5 — Comparativas finales
 
-_(Se irá completando a medida que se agregue contenido.)_
+- [Selenium vs Cypress: comparativa completa](./docs/comparativas/selenium-vs-cypress.md)
+- _(se irá completando con más comparativas: Selenium vs Playwright, Cypress vs Playwright, etc.)_
+
+### Fase 6 — CI/CD aplicado
+
+1. [Anatomía de un workflow (GitHub Actions)](./ci-cd/github-actions/github-actions-anatomia.md)
+2. _(se irá completando con Jenkins, GitLab CI, y un pipeline real aplicado a los proyectos ya construidos)_
 
 ---
 
@@ -293,6 +299,9 @@ Retos prácticos con dificultad progresiva, usando las mismas apps reales gratui
 | 03 | [Interceptar red con page.route](./playwright/ejercicios/03-page-route.md) | 🟡🔴 Intermedio-avanzado | Espiar, mockear con `fulfill()`, abortar |
 | 04 | [Carrito con Page Object y multi-navegador](./playwright/ejercicios/04-carrito-multi-navegador.md) | 🔴 Avanzado | Fixtures personalizadas, `test.step()`, 3 navegadores |
 
+### `ci-cd/github-actions/`
+- [Anatomía de un workflow](./ci-cd/github-actions/github-actions-anatomia.md) — dónde vive el archivo (`.github/workflows/`), el trigger (`on`: push, pull_request, schedule), `jobs`/`runs-on` como máquinas desechables, `steps` con `uses` vs `run`, `strategy.matrix` para correr en paralelo con variaciones, cachear dependencias, `upload-artifact` (incluso en fallos con `if: always()`), y `secrets` para credenciales. Incluye el workflow completo armado pieza por pieza, analogías cotidianas (línea de ensamblaje, caja fuerte separada) y diagrama del flujo.
+
 ---
 
 ## 🛠 Herramientas cubiertas
@@ -303,7 +312,7 @@ Retos prácticos con dificultad progresiva, usando las mismas apps reales gratui
 | [Appium](./appium) | Móvil (Android/iOS) | Java, Python, JS | 🟢 Completo (fundamentos) |
 | [Cypress](./cypress) | Web (navegador) | JavaScript/TypeScript | 🟢 Completo (fundamentos) |
 | [Playwright](./playwright) | Web (navegador, multi-motor) | JS/TS, Python, .NET, Java | 🟢 Completo (fundamentos) |
-| [CI/CD](./ci-cd) | Integración continua | YAML / Groovy | 🟡 En progreso |
+| [CI/CD](./ci-cd) | Integración continua | YAML / Groovy | 🟡 En progreso (1 nota agregada) |
 
 **Leyenda:** 🟢 Completo · 🟡 En progreso · 🔴 Pendiente
 
@@ -342,8 +351,8 @@ Retos prácticos con dificultad progresiva, usando las mismas apps reales gratui
 - [x] Appium: fundamentos completos — "¿Qué es Appium?", instalación/setup del entorno, capabilities, Appium Inspector, locators específicos de mobile, gestos táctiles, y el primer test funcional completo (end-to-end en app de demo con Page Object Model). Pendiente para más adelante: testing cross-platform, Appium + CI/CD, y device farms en la nube.
 - [x] Cypress: fundamentos completos — "¿Qué es Cypress?", instalación/setup, anatomía de un test, selectors, retry-ability, `cy.intercept`, y el primer test funcional completo (end-to-end de login con Page Object Model y fixtures). Pendiente para más adelante: custom commands, Cypress + CI/CD, y Component Testing.
 - [x] Playwright: fundamentos completos — "¿Qué es Playwright?", instalación/setup, anatomía de un test, locators por accesibilidad, auto-waiting, `page.route`, y el primer test funcional completo (end-to-end con Page Object Model, fixtures personalizadas, y ejecución multi-navegador). Pendiente para más adelante: Trace Viewer, Playwright + CI/CD, y testing de componentes.
-- [ ] CI/CD: primer pipeline con GitHub Actions
-- [ ] `docs/comparativas`: tabla comparativa Selenium vs Playwright vs Cypress
+- [ ] CI/CD: primer pipeline con GitHub Actions — "Anatomía de un workflow" agregada (on, jobs, steps, matrix, cache, artifacts, secrets); falta el pipeline real aplicado paso a paso al tutorial de Selenium+Gradle, y luego Jenkins/GitLab CI
+- [ ] `docs/comparativas`: tabla comparativa Selenium vs Playwright vs Cypress — ya existe Selenium vs Cypress; falta ampliar con Playwright
 
 ---
 
