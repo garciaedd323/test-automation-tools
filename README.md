@@ -93,6 +93,8 @@ Si ya completaste la Fase 1, este bloque se lee mucho más rápido — Appium re
 6. [Interceptar red con page.route](./playwright/notas/page-route-playwright.md)
 7. 🏁 **Práctica integradora:** [El primer test funcional completo](./playwright/notas/primer-test-playwright.md)
 
+**🎯 Ahora practica por tu cuenta:** [4 ejercicios progresivos](./playwright/ejercicios/) (básico → avanzado) — varios reutilizan el mismo escenario que ya resolviste en Selenium/Cypress, para comparar la sintaxis directamente.
+
 ### Fase 5+ — Comparativas finales
 
 _(Se irá completando a medida que se agregue contenido.)_
@@ -126,7 +128,8 @@ automatizacion-pruebas/
 ├── playwright/
 │   ├── notas/
 │   ├── recursos/
-│   └── tutoriales/
+│   ├── tutoriales/
+│   └── ejercicios/
 ├── ci-cd/
 │   ├── notas/
 │   ├── jenkins/
@@ -168,6 +171,7 @@ graph TD
     PLAY --> PLAY_NOTAS["notas"]
     PLAY --> PLAY_RECURSOS["recursos (prompts, capturas)"]
     PLAY --> PLAY_TUT["tutoriales"]
+    PLAY --> PLAY_EJERCICIOS["ejercicios 🎯"]
 
     ROOT --> CICD["📁 ci-cd"]
     CICD --> CICD_JENKINS["jenkins"]
@@ -263,6 +267,16 @@ Retos prácticos con dificultad progresiva, usando apps reales gratuitas ([the-i
 - [Interceptar red con page.route](./playwright/notas/page-route-playwright.md) — espiar sin modificar (`route.continue()`), modificar la petición saliente antes de continuar, mockear respuestas completas (`route.fulfill()`), simular errores y latencia (`route.abort()`), interceptar por patrones amplios de URL, `page.waitForResponse()` como equivalente a `cy.wait`, y tabla comparativa completa con `cy.intercept`. Incluye analogías cotidianas (centralita telefónica, carta con sello especial) y diagrama de flujo.
 - [El primer test funcional completo](./playwright/notas/primer-test-playwright.md) — flujo end-to-end real de login: fixture `page` aislada, Page Object con `getByRole`, `Promise.all` combinando clic y `waitForResponse` en la misma expresión, fixtures personalizadas para evitar repetir el login, y ejecución automática multi-navegador (Chromium, Firefox, WebKit) sin duplicar código. Incluye analogías cotidianas (misma obra en tres teatros la misma noche) y diagrama del flujo completo.
 
+### `playwright/ejercicios/` 🎯
+Retos prácticos con dificultad progresiva, usando las mismas apps reales gratuitas ya conocidas ([the-internet.herokuapp.com](https://the-internet.herokuapp.com), [example.cypress.io](https://example.cypress.io), [saucedemo.com](https://www.saucedemo.com)). Varios ejercicios reutilizan el mismo escenario que Selenium/Cypress a propósito, para comparar directamente cómo cambia (o no) la sintaxis entre herramientas.
+
+| # | Ejercicio | Nivel | Enfoque |
+|---|---|---|---|
+| 01 | [getByRole básico](./playwright/ejercicios/01-getbyrole-basico.md) | 🟢 Básico | `.check()`, `.selectOption()`, cuándo caer a CSS |
+| 02 | [Auto-waiting con contenido dinámico](./playwright/ejercicios/02-auto-waiting.md) | 🟡 Intermedio | `expect().toBeVisible()` sin `waitForTimeout` |
+| 03 | [Interceptar red con page.route](./playwright/ejercicios/03-page-route.md) | 🟡🔴 Intermedio-avanzado | Espiar, mockear con `fulfill()`, abortar |
+| 04 | [Carrito con Page Object y multi-navegador](./playwright/ejercicios/04-carrito-multi-navegador.md) | 🔴 Avanzado | Fixtures personalizadas, `test.step()`, 3 navegadores |
+
 ---
 
 ## 🛠 Herramientas cubiertas
@@ -307,7 +321,8 @@ Retos prácticos con dificultad progresiva, usando apps reales gratuitas ([the-i
 - [x] Selenium: `tutoriales/` — primer tutorial agregado (suite completa con Gradle: setup → POM → screenshots → Allure → GitHub Actions).
 - [x] Selenium: `ejercicios/` — 4 ejercicios progresivos agregados (locators/clic → checkboxes/dropdown → login con esperas → carrito con POM), con pistas colapsables y solución para autoevaluación.
 - [x] Cypress: `ejercicios/` — 4 ejercicios progresivos agregados (selectors/assert → retry-ability con contenido dinámico → cy.intercept con la app oficial de ejemplos → carrito con Page Object y fixtures).
-- [ ] Appium/Playwright: `ejercicios/` — pendiente replicar el mismo patrón de práctica progresiva usado en Selenium y Cypress.
+- [x] Playwright: `ejercicios/` — 4 ejercicios progresivos agregados (getByRole básico → auto-waiting con contenido dinámico → page.route → carrito con Page Object, fixtures y multi-navegador).
+- [ ] Appium: `ejercicios/` — pendiente; requiere decidir cómo dar acceso a un emulador/app de demo antes de poder proponer retos prácticos.
 - [x] Appium: fundamentos completos — "¿Qué es Appium?", instalación/setup del entorno, capabilities, Appium Inspector, locators específicos de mobile, gestos táctiles, y el primer test funcional completo (end-to-end en app de demo con Page Object Model). Pendiente para más adelante: testing cross-platform, Appium + CI/CD, y device farms en la nube.
 - [x] Cypress: fundamentos completos — "¿Qué es Cypress?", instalación/setup, anatomía de un test, selectors, retry-ability, `cy.intercept`, y el primer test funcional completo (end-to-end de login con Page Object Model y fixtures). Pendiente para más adelante: custom commands, Cypress + CI/CD, y Component Testing.
 - [x] Playwright: fundamentos completos — "¿Qué es Playwright?", instalación/setup, anatomía de un test, locators por accesibilidad, auto-waiting, `page.route`, y el primer test funcional completo (end-to-end con Page Object Model, fixtures personalizadas, y ejecución multi-navegador). Pendiente para más adelante: Trace Viewer, Playwright + CI/CD, y testing de componentes.
