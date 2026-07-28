@@ -108,7 +108,7 @@ Si ya completaste la Fase 1, este bloque se lee mucho más rápido — Appium re
 1. [Anatomía de un workflow (GitHub Actions)](./ci-cd/github-actions/github-actions-anatomia.md)
 2. [Pipeline real aplicado (Selenium + Gradle)](./ci-cd/github-actions/pipeline-selenium-gradle.md) — el mismo tutorial ya construido, ahora corriendo automáticamente en cada push.
 3. [Jenkins — Conceptos y tu primer pipeline](./ci-cd/jenkins/jenkins-conceptos.md) — léela comparando activamente contra lo ya visto de GitHub Actions.
-4. _(se irá completando con GitLab CI)_
+4. 🏁 [GitLab CI — Conceptos y tu primer pipeline](./ci-cd/gitlab-ci/gitlab-ci-conceptos.md) — cierra el círculo comparativo de las tres herramientas.
 
 ---
 
@@ -308,6 +308,9 @@ Retos prácticos con dificultad progresiva, usando las mismas apps reales gratui
 ### `ci-cd/jenkins/`
 - [Jenkins — Conceptos y tu primer pipeline](./ci-cd/jenkins/jenkins-conceptos.md) — arquitectura Controller/Agent (infraestructura propia y persistente, a diferencia de los runners efímeros de GitHub Actions), el `Jenkinsfile` en Groovy, tabla de equivalencias directas con GitHub Actions (`stages`, `agent`, `archiveArtifacts`, Credentials), plugins como ecosistema que hay que mantener manualmente, triggers (webhook vs poll SCM), Blue Ocean, y cuándo Jenkins tiene sentido sobre GitHub Actions. Incluye analogías cotidianas (fábrica rentada vs fábrica propia) y diagrama de arquitectura.
 
+### `ci-cd/gitlab-ci/`
+- [GitLab CI — Conceptos y tu primer pipeline](./ci-cd/gitlab-ci/gitlab-ci-conceptos.md) — el archivo `.gitlab-ci.yml` (nombre fijo en la raíz, a diferencia de la carpeta de GitHub Actions), tabla de equivalencias a tres bandas con GitHub Actions y Jenkins, `image:` como definición del entorno (en vez de `runs-on`), runners compartidos vs propios (el punto medio entre GitHub Actions y Jenkins), orden de `stages`, y pipelines condicionados a Merge Requests (`rules:`). Incluye analogías cotidianas (misma fábrica rentada, dueño distinto) y cierra el círculo comparativo de las tres herramientas de CI/CD.
+
 ---
 
 ## 🛠 Herramientas cubiertas
@@ -318,7 +321,7 @@ Retos prácticos con dificultad progresiva, usando las mismas apps reales gratui
 | [Appium](./appium) | Móvil (Android/iOS) | Java, Python, JS | 🟢 Completo (fundamentos) |
 | [Cypress](./cypress) | Web (navegador) | JavaScript/TypeScript | 🟢 Completo (fundamentos) |
 | [Playwright](./playwright) | Web (navegador, multi-motor) | JS/TS, Python, .NET, Java | 🟢 Completo (fundamentos) |
-| [CI/CD](./ci-cd) | Integración continua | YAML / Groovy | 🟡 En progreso (3 notas agregadas) |
+| [CI/CD](./ci-cd) | Integración continua | YAML / Groovy | 🟢 Completo (3 herramientas) |
 
 **Leyenda:** 🟢 Completo · 🟡 En progreso · 🔴 Pendiente
 
@@ -357,7 +360,7 @@ Retos prácticos con dificultad progresiva, usando las mismas apps reales gratui
 - [x] Appium: fundamentos completos — "¿Qué es Appium?", instalación/setup del entorno, capabilities, Appium Inspector, locators específicos de mobile, gestos táctiles, y el primer test funcional completo (end-to-end en app de demo con Page Object Model). Pendiente para más adelante: testing cross-platform, Appium + CI/CD, y device farms en la nube.
 - [x] Cypress: fundamentos completos — "¿Qué es Cypress?", instalación/setup, anatomía de un test, selectors, retry-ability, `cy.intercept`, y el primer test funcional completo (end-to-end de login con Page Object Model y fixtures). Pendiente para más adelante: custom commands, Cypress + CI/CD, y Component Testing.
 - [x] Playwright: fundamentos completos — "¿Qué es Playwright?", instalación/setup, anatomía de un test, locators por accesibilidad, auto-waiting, `page.route`, y el primer test funcional completo (end-to-end con Page Object Model, fixtures personalizadas, y ejecución multi-navegador). Pendiente para más adelante: Trace Viewer, Playwright + CI/CD, y testing de componentes.
-- [ ] CI/CD: primer pipeline con GitHub Actions — "Anatomía de un workflow", "Pipeline real aplicado (Selenium + Gradle)" y "Jenkins — Conceptos y tu primer pipeline" agregados; falta GitLab CI
+- [x] CI/CD completo — GitHub Actions ("Anatomía de un workflow" + "Pipeline real aplicado"), Jenkins ("Conceptos y tu primer pipeline"), y GitLab CI ("Conceptos y tu primer pipeline"), con tabla de equivalencias a tres bandas entre las tres herramientas.
 - [ ] `docs/comparativas`: tabla comparativa Selenium vs Playwright vs Cypress — ya existe Selenium vs Cypress; falta ampliar con Playwright
 
 ---
