@@ -32,7 +32,8 @@ Si nunca has hecho testing ni automatización, **no leas el repo de arriba hacia
 3. [Pirámide de testing](./docs/conceptos-generales/piramide-de-testing.md)
 4. [Estrategia de automatización](./docs/conceptos-generales/estrategia-de-automatizacion.md)
 5. [Buenas prácticas generales](./docs/conceptos-generales/buenas-practicas-generales.md)
-6. [Glosario](./docs/conceptos-generales/glosario.md) — no lo leas de corrido, consúltalo cuando aparezca un término que no reconozcas en las fases siguientes.
+6. [CI/CD — Conceptos generales](./docs/conceptos-generales/cicd-conceptos-generales.md) — el puente conceptual antes de ver implementaciones específicas más adelante en `ci-cd/`.
+7. [Glosario](./docs/conceptos-generales/glosario.md) — no lo leas de corrido, consúltalo cuando aparezca un término que no reconozcas en las fases siguientes.
 
 ### Fase 1 — Selenium (la base de todo lo demás)
 
@@ -198,6 +199,7 @@ graph TD
 - [Patrones de diseño](./docs/conceptos-generales/patrones-de-diseno.md) — Page Object Model, Page Factory y Screenplay Pattern, con ejemplos de código, comparación y guía de cuándo elegir cada uno.
 - [Estrategia de automatización](./docs/conceptos-generales/estrategia-de-automatizacion.md) — criterios de priorización, matriz impacto/frecuencia, cálculo de ROI, mantenibilidad y proceso práctico para decidir qué automatizar primero.
 - [Buenas prácticas generales](./docs/conceptos-generales/buenas-practicas-generales.md) — naming de tests, independencia entre pruebas, datos de prueba, cómo evitar flaky tests, esperas explícitas vs. implícitas.
+- [CI/CD — Conceptos generales](./docs/conceptos-generales/cicd-conceptos-generales.md) — qué es Integración Continua, la diferencia entre Continuous Delivery y Continuous Deployment, por qué CI/CD le da sentido real a la automatización de pruebas, anatomía de un pipeline (trigger, stage, job, runner, artifact), quality gates, y cómo se conecta con lo ya visto en el repo (workflows de GitHub Actions generados por Selenium/Playwright, reportes de Allure como artifacts). Incluye analogías cotidianas (línea de ensamblaje de una fábrica de autos) y diagrama del flujo conceptual.
 - [Glosario](./docs/conceptos-generales/glosario.md) — ~100 términos de testing y automatización, ordenados alfabéticamente, con referencias cruzadas al resto de las notas.
 
 ### `docs/comparativas/`
@@ -330,7 +332,7 @@ Retos prácticos con dificultad progresiva, usando las mismas apps reales gratui
 
 ## 🗺 Roadmap
 
-- [ ] Completar `docs/conceptos-generales` (fundamentos de testing y automatización) — 7/8 notas agregadas
+- [x] `docs/conceptos-generales` completo — 8/8 notas agregadas (la última: CI/CD — Conceptos generales, el puente hacia la carpeta `ci-cd/` todavía vacía).
 - [x] Selenium: fundamentos + avanzado completos — introducción, instalación/setup, locators, Selenium Grid, esperas, interacciones con elementos, ventanas/frames, alertas de JavaScript, Page Object Model (con script end-to-end de login+assert), screenshots/evidencias, excepciones comunes, integración con test runner (JUnit 5/TestNG), generación de reportes (Allure/Extent Reports) y troubleshooting de Serenity+Gradle (`aggregate`).
 - [x] Selenium: `tutoriales/` — primer tutorial agregado (suite completa con Gradle: setup → POM → screenshots → Allure → GitHub Actions).
 - [x] Selenium: `ejercicios/` — 4 ejercicios progresivos agregados (locators/clic → checkboxes/dropdown → login con esperas → carrito con POM), con pistas colapsables y solución para autoevaluación.
