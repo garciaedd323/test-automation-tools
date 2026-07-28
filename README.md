@@ -101,7 +101,7 @@ Si ya completaste la Fase 1, este bloque se lee mucho más rápido — Appium re
 ### Fase 5 — Comparativas finales
 
 - [Selenium vs Cypress: comparativa completa](./docs/comparativas/selenium-vs-cypress.md)
-- _(se irá completando con más comparativas: Selenium vs Playwright, Cypress vs Playwright, etc.)_
+- 🏁 [Comparativa a 4 bandas: Selenium vs Appium vs Cypress vs Playwright](./docs/comparativas/comparativa-4-herramientas.md) — el cierre de todo el recorrido, con las cuatro herramientas puestas en la misma tabla.
 
 ### Fase 6 — CI/CD aplicado
 
@@ -211,7 +211,8 @@ graph TD
 - [Glosario](./docs/conceptos-generales/glosario.md) — ~100 términos de testing y automatización, ordenados alfabéticamente, con referencias cruzadas al resto de las notas.
 
 ### `docs/comparativas/`
-_(Pendiente)_
+- [Selenium vs Cypress: comparativa completa](./docs/comparativas/selenium-vs-cypress.md) — resumen ejecutivo de decisión rápida, arquitectura (remoto vs dentro del navegador), velocidad, lenguajes soportados, multi-navegador y multi-dominio, interceptar red/mocking, testing mobile (Appium como extensión de Selenium), setup, ecosistema y madurez, y tabla de decisión final. Incluye analogías cotidianas (agencia de seguridad global vs guardaespaldas personal) y diagrama comparativo.
+- [Comparativa a 4 bandas: Selenium vs Appium vs Cypress vs Playwright](./docs/comparativas/comparativa-4-herramientas.md) — las cuatro herramientas puestas en la misma tabla: arquitectura, lenguajes, velocidad, cobertura de navegadores/plataformas, multi-dominio, interceptar red, setup y madurez, con la aclaración de que Appium no compite realmente con las otras tres (automatiza un tipo de aplicación distinto). Incluye tabla de decisión final ampliada y diagrama comparativo.
 
 ### `selenium/notas/`
 - [¿Qué es Selenium?](./selenium/notas/que-es-selenium.md) — qué es, para qué se usa, cómo funciona (WebDriver), componentes clave, ejemplos cotidianos y primer script en Python.
@@ -361,7 +362,7 @@ Retos prácticos con dificultad progresiva, usando las mismas apps reales gratui
 - [x] Cypress: fundamentos completos — "¿Qué es Cypress?", instalación/setup, anatomía de un test, selectors, retry-ability, `cy.intercept`, y el primer test funcional completo (end-to-end de login con Page Object Model y fixtures). Pendiente para más adelante: custom commands, Cypress + CI/CD, y Component Testing.
 - [x] Playwright: fundamentos completos — "¿Qué es Playwright?", instalación/setup, anatomía de un test, locators por accesibilidad, auto-waiting, `page.route`, y el primer test funcional completo (end-to-end con Page Object Model, fixtures personalizadas, y ejecución multi-navegador). Pendiente para más adelante: Trace Viewer, Playwright + CI/CD, y testing de componentes.
 - [x] CI/CD completo — GitHub Actions ("Anatomía de un workflow" + "Pipeline real aplicado"), Jenkins ("Conceptos y tu primer pipeline"), y GitLab CI ("Conceptos y tu primer pipeline"), con tabla de equivalencias a tres bandas entre las tres herramientas.
-- [ ] `docs/comparativas`: tabla comparativa Selenium vs Playwright vs Cypress — ya existe Selenium vs Cypress; falta ampliar con Playwright
+- [x] `docs/comparativas` completo — Selenium vs Cypress, y la comparativa final a 4 bandas (Selenium/Appium/Cypress/Playwright) con tabla de decisión ampliada.
 
 ---
 

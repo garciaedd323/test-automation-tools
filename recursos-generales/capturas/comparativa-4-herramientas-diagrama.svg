@@ -1,0 +1,34 @@
+<svg width="680" height="200" viewBox="0 0 680 200" xmlns="http://www.w3.org/2000/svg" role="img">
+<title>Comparativa de fortalezas distintivas: Selenium, Appium, Cypress y Playwright</title>
+<desc>Diagrama que agrupa las cuatro herramientas de automatización según su fortaleza distintiva: Selenium por madurez y alcance multi-lenguaje, Appium por ser la única opción de testing mobile nativo, Cypress por velocidad y simplicidad de setup, y Playwright por combinar cobertura de navegadores con velocidad.</desc>
+
+<rect x="0" y="0" width="680" height="200" fill="#ffffff"/>
+
+<g>
+  <rect x="20" y="60" width="150" height="70" rx="8" fill="#E6F1FB" stroke="#185FA5" stroke-width="0.5"/>
+  <text x="95" y="82" text-anchor="middle" dominant-baseline="central" font-family="Arial, sans-serif" font-size="14" font-weight="600" fill="#0C447C">Selenium</text>
+  <text x="95" y="102" text-anchor="middle" dominant-baseline="central" font-family="Arial, sans-serif" font-size="12" fill="#185FA5">Madurez +</text>
+  <text x="95" y="116" text-anchor="middle" dominant-baseline="central" font-family="Arial, sans-serif" font-size="12" fill="#185FA5">multi-lenguaje</text>
+</g>
+
+<g>
+  <rect x="185" y="60" width="150" height="70" rx="8" fill="#EEEDFE" stroke="#534AB7" stroke-width="0.5"/>
+  <text x="260" y="82" text-anchor="middle" dominant-baseline="central" font-family="Arial, sans-serif" font-size="14" font-weight="600" fill="#26215C">Appium</text>
+  <text x="260" y="102" text-anchor="middle" dominant-baseline="central" font-family="Arial, sans-serif" font-size="12" fill="#3C3489">Mobile</text>
+  <text x="260" y="116" text-anchor="middle" dominant-baseline="central" font-family="Arial, sans-serif" font-size="12" fill="#3C3489">nativo</text>
+</g>
+
+<g>
+  <rect x="350" y="60" width="150" height="70" rx="8" fill="#E1F5EE" stroke="#0F6E56" stroke-width="0.5"/>
+  <text x="425" y="82" text-anchor="middle" dominant-baseline="central" font-family="Arial, sans-serif" font-size="14" font-weight="600" fill="#085041">Cypress</text>
+  <text x="425" y="102" text-anchor="middle" dominant-baseline="central" font-family="Arial, sans-serif" font-size="12" fill="#0F6E56">Velocidad +</text>
+  <text x="425" y="116" text-anchor="middle" dominant-baseline="central" font-family="Arial, sans-serif" font-size="12" fill="#0F6E56">simplicidad</text>
+</g>
+
+<g>
+  <rect x="515" y="60" width="150" height="70" rx="8" fill="#FAECE7" stroke="#993C1D" stroke-width="0.5"/>
+  <text x="590" y="82" text-anchor="middle" dominant-baseline="central" font-family="Arial, sans-serif" font-size="14" font-weight="600" fill="#4A1B0C">Playwright</text>
+  <text x="590" y="102" text-anchor="middle" dominant-baseline="central" font-family="Arial, sans-serif" font-size="12" fill="#993C1D">Cobertura +</text>
+  <text x="590" y="116" text-anchor="middle" dominant-baseline="central" font-family="Arial, sans-serif" font-size="12" fill="#993C1D">velocidad</text>
+</g>
+</svg>
