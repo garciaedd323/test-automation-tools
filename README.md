@@ -52,6 +52,8 @@ Sigue este orden exacto — cada nota se apoya en la anterior:
 12. [Generación de reportes: Allure Report y Extent Reports](./selenium/notas/reportes-selenium-java.md)
 13. 🏁 **Práctica integradora:** [Suite completa de automatización con Gradle](./selenium/tutoriales/tutorial_suite_completa_selenium_gradle.md) — el tutorial que junta todo lo anterior en un proyecto real, de principio a fin.
 
+**🎯 Ahora practica por tu cuenta:** [4 ejercicios progresivos](./selenium/ejercicios/) (básico → avanzado), con pistas colapsables y solución para autoevaluarte, usando apps reales gratuitas hechas para practicar.
+
 **Opcionales (vuelve a ellas cuando las necesites, no bloquean tu avance):**
 - [Selenium 4 vs versiones anteriores](./selenium/notas/selenium-4-vs-versiones-anteriores.md) — más historia que práctica.
 - [Selenium Grid](./selenium/notas/selenium-grid.md) — solo cuando necesites correr en paralelo o multi-navegador.
@@ -108,7 +110,8 @@ automatizacion-pruebas/
 │   ├── recursos/
 │   │   ├── prompts/
 │   │   └── capturas/
-│   └── tutoriales/
+│   ├── tutoriales/
+│   └── ejercicios/
 ├── appium/
 │   ├── notas/
 │   ├── recursos/
@@ -145,6 +148,7 @@ graph TD
     SEL --> SEL_NOTAS["notas"]
     SEL --> SEL_RECURSOS["recursos (prompts, capturas)"]
     SEL --> SEL_TUT["tutoriales"]
+    SEL --> SEL_EJERCICIOS["ejercicios 🎯"]
 
     ROOT --> APP["📁 appium"]
     APP --> APP_NOTAS["notas"]
@@ -207,6 +211,16 @@ _(Pendiente)_
 ### `selenium/tutoriales/`
 - [Suite completa de automatización con Gradle](./selenium/tutoriales/tutorial_suite_completa_selenium_gradle.md) — recorrido paso a paso end-to-end: setup del proyecto con `gradle init`, primer test crudo, esperas explícitas, refactor a Page Object Model, screenshots automáticos en fallos, reportes con Allure (plugin oficial de Gradle), modo headless, y pipeline de GitHub Actions. Incluye tabla comparativa Maven vs Gradle y diagrama del flujo completo.
   - 🖥️ [Versión interactiva (HTML)](./selenium/tutoriales/tutorial-suite-completa-selenium-gradle.html) — mismo contenido en formato de pipeline visual navegable, con sidebar tipo stepper de CI que resalta la etapa activa al hacer scroll.
+
+### `selenium/ejercicios/` 🎯
+Retos prácticos con dificultad progresiva, usando apps reales gratuitas ([the-internet.herokuapp.com](https://the-internet.herokuapp.com), [saucedemo.com](https://www.saucedemo.com)) hechas específicamente para practicar automatización. Cada reto incluye pistas colapsables y un archivo de solución separado para autoevaluarse sin arruinar el intento.
+
+| # | Ejercicio | Nivel | Enfoque |
+|---|---|---|---|
+| 01 | [Tu primer locator y clic](./selenium/ejercicios/01-primer-locator-y-clic.md) | 🟢 Básico | Locators, navegación, assert de URL |
+| 02 | [Checkboxes y dropdown](./selenium/ejercicios/02-checkboxes-y-dropdown.md) | 🟢🟡 Básico-intermedio | `isSelected()`, clase `Select` |
+| 03 | [Login con esperas explícitas](./selenium/ejercicios/03-login-con-esperas.md) | 🟡 Intermedio | `WebDriverWait`, múltiples escenarios en un test |
+| 04 | [Carrito de compras con POM](./selenium/ejercicios/04-carrito-page-object-model.md) | 🔴 Avanzado | Page Object Model completo, `TestWatcher`, JUnit 5 |
 
 ### `appium/notas/`
 - [¿Qué es Appium y cómo funciona?](./appium/notas/que-es-appium.md) — arquitectura cliente-servidor, el rol del Appium Server, `UiAutomator2` vs `XCUITest`, diferencia entre apps nativas/híbridas/web móvil (con cambio de contexto `NATIVE_APP`/`WEBVIEW`), y por qué Appium reutiliza el protocolo WebDriver de Selenium. Incluye analogías cotidianas (línea de atención al cliente internacional, casas locales vs prefabricadas) y diagrama de apoyo.
@@ -277,6 +291,8 @@ _(Pendiente)_
 - [ ] Completar `docs/conceptos-generales` (fundamentos de testing y automatización) — 7/8 notas agregadas
 - [x] Selenium: fundamentos + avanzado completos — introducción, instalación/setup, locators, Selenium Grid, esperas, interacciones con elementos, ventanas/frames, alertas de JavaScript, Page Object Model (con script end-to-end de login+assert), screenshots/evidencias, excepciones comunes, integración con test runner (JUnit 5/TestNG), generación de reportes (Allure/Extent Reports) y troubleshooting de Serenity+Gradle (`aggregate`).
 - [x] Selenium: `tutoriales/` — primer tutorial agregado (suite completa con Gradle: setup → POM → screenshots → Allure → GitHub Actions).
+- [x] Selenium: `ejercicios/` — 4 ejercicios progresivos agregados (locators/clic → checkboxes/dropdown → login con esperas → carrito con POM), con pistas colapsables y solución para autoevaluación.
+- [ ] Appium/Cypress/Playwright: `ejercicios/` — pendiente replicar el mismo patrón de práctica progresiva usado en Selenium.
 - [x] Appium: fundamentos completos — "¿Qué es Appium?", instalación/setup del entorno, capabilities, Appium Inspector, locators específicos de mobile, gestos táctiles, y el primer test funcional completo (end-to-end en app de demo con Page Object Model). Pendiente para más adelante: testing cross-platform, Appium + CI/CD, y device farms en la nube.
 - [x] Cypress: fundamentos completos — "¿Qué es Cypress?", instalación/setup, anatomía de un test, selectors, retry-ability, `cy.intercept`, y el primer test funcional completo (end-to-end de login con Page Object Model y fixtures). Pendiente para más adelante: custom commands, Cypress + CI/CD, y Component Testing.
 - [x] Playwright: fundamentos completos — "¿Qué es Playwright?", instalación/setup, anatomía de un test, locators por accesibilidad, auto-waiting, `page.route`, y el primer test funcional completo (end-to-end con Page Object Model, fixtures personalizadas, y ejecución multi-navegador). Pendiente para más adelante: Trace Viewer, Playwright + CI/CD, y testing de componentes.
