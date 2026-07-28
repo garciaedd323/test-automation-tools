@@ -81,6 +81,8 @@ Si ya completaste la Fase 1, este bloque se lee mucho más rápido — Appium re
 6. [Interceptar requests de red con cy.intercept](./cypress/notas/cy-intercept-cypress.md)
 7. 🏁 **Práctica integradora:** [El primer test funcional completo](./cypress/notas/primer-test-cypress.md)
 
+**🎯 Ahora practica por tu cuenta:** [4 ejercicios progresivos](./cypress/ejercicios/) (básico → avanzado), incluyendo la app oficial de ejemplos de Cypress.
+
 ### Fase 4 — Playwright (la síntesis de todo lo anterior)
 
 1. [¿Qué es Playwright y cómo funciona?](./playwright/notas/que-es-playwright.md) — se lee más rápido si ya se completaron las Fases 1 y 3, porque compara constantemente con Selenium y Cypress.
@@ -119,7 +121,8 @@ automatizacion-pruebas/
 ├── cypress/
 │   ├── notas/
 │   ├── recursos/
-│   └── tutoriales/
+│   ├── tutoriales/
+│   └── ejercicios/
 ├── playwright/
 │   ├── notas/
 │   ├── recursos/
@@ -159,6 +162,7 @@ graph TD
     CYP --> CYP_NOTAS["notas"]
     CYP --> CYP_RECURSOS["recursos (prompts, capturas)"]
     CYP --> CYP_TUT["tutoriales"]
+    CYP --> CYP_EJERCICIOS["ejercicios 🎯"]
 
     ROOT --> PLAY["📁 playwright"]
     PLAY --> PLAY_NOTAS["notas"]
@@ -240,6 +244,16 @@ Retos prácticos con dificultad progresiva, usando apps reales gratuitas ([the-i
 - [Interceptar requests de red con cy.intercept](./cypress/notas/cy-intercept-cypress.md) — espiar peticiones con `.as()` y sincronizar con `cy.wait('@alias')`, mockear respuestas completas, simular errores de red/servidor y respuestas lentas, comparación con lo que Selenium/Appium no pueden hacer nativamente, el riesgo de abusar del mock, y fixtures reutilizables. Incluye analogías cotidianas (micrófono oculto, apuntador con guion distinto) y diagrama de flujo.
 - [El primer test funcional completo](./cypress/notas/primer-test-cypress.md) — flujo end-to-end real de login: `cy.intercept` antes de `cy.visit`, interacción vía Page Object con selectors `data-cy`, sincronización con `cy.wait('@alias')`, aserción final, y fixtures para datos reutilizables. Incluye analogías cotidianas (montar la obra de teatro completa, GPS con ruta guardada) y diagrama del flujo completo.
 
+### `cypress/ejercicios/` 🎯
+Retos prácticos con dificultad progresiva, usando apps reales gratuitas ([the-internet.herokuapp.com](https://the-internet.herokuapp.com), [example.cypress.io](https://example.cypress.io) — la app oficial de ejemplos de Cypress, [saucedemo.com](https://www.saucedemo.com)) hechas específicamente para practicar automatización. Cada reto incluye pistas colapsables y un archivo de solución separado.
+
+| # | Ejercicio | Nivel | Enfoque |
+|---|---|---|---|
+| 01 | [Selectors y assert](./cypress/ejercicios/01-selectors-y-assert.md) | 🟢 Básico | `.check()`, `.select()`, selectors CSS |
+| 02 | [Retry-ability con contenido dinámico](./cypress/ejercicios/02-retry-ability.md) | 🟡 Intermedio | `.should()` sin `cy.wait(numero)`, loaders |
+| 03 | [Interceptar red con cy.intercept](./cypress/ejercicios/03-cy-intercept.md) | 🟡🔴 Intermedio-avanzado | Espiar, mockear con fixture, simular error |
+| 04 | [Carrito con Page Object y fixtures](./cypress/ejercicios/04-carrito-page-object.md) | 🔴 Avanzado | Page Object, fixtures, custom commands |
+
 ### `playwright/notas/`
 - [¿Qué es Playwright y cómo funciona?](./playwright/notas/que-es-playwright.md) — arquitectura híbrida (corre fuera del navegador como Selenium, pero se comunica por CDP directo en vez de WebDriver), instalación automática de los tres motores de navegador (Chromium, Firefox, WebKit), `BrowserContext` para multi-pestaña/multi-sesión sin la limitación de dominio de Cypress, soporte multi-lenguaje, y tabla comparativa completa con Selenium y Cypress. Incluye analogías cotidianas (especialista de mantenimiento con llaves maestras) y diagrama de arquitectura.
 - [Instalación y setup](./playwright/notas/instalacion-setup-playwright.md) — `npm init playwright@latest` y las 4 preguntas interactivas explicadas a fondo (TypeScript vs JavaScript, carpeta de tests, workflow de GitHub Actions, instalar navegadores ahora), estructura autogenerada con CI incluido, `playwright.config.ts` con soporte multi-proyecto nativo, modo headless/headed/`--ui`, y tabla comparativa de instalación con Selenium y Cypress. Incluye analogías cotidianas (electrodoméstico con tres motores de fábrica) y diagrama de apoyo.
@@ -292,7 +306,8 @@ Retos prácticos con dificultad progresiva, usando apps reales gratuitas ([the-i
 - [x] Selenium: fundamentos + avanzado completos — introducción, instalación/setup, locators, Selenium Grid, esperas, interacciones con elementos, ventanas/frames, alertas de JavaScript, Page Object Model (con script end-to-end de login+assert), screenshots/evidencias, excepciones comunes, integración con test runner (JUnit 5/TestNG), generación de reportes (Allure/Extent Reports) y troubleshooting de Serenity+Gradle (`aggregate`).
 - [x] Selenium: `tutoriales/` — primer tutorial agregado (suite completa con Gradle: setup → POM → screenshots → Allure → GitHub Actions).
 - [x] Selenium: `ejercicios/` — 4 ejercicios progresivos agregados (locators/clic → checkboxes/dropdown → login con esperas → carrito con POM), con pistas colapsables y solución para autoevaluación.
-- [ ] Appium/Cypress/Playwright: `ejercicios/` — pendiente replicar el mismo patrón de práctica progresiva usado en Selenium.
+- [x] Cypress: `ejercicios/` — 4 ejercicios progresivos agregados (selectors/assert → retry-ability con contenido dinámico → cy.intercept con la app oficial de ejemplos → carrito con Page Object y fixtures).
+- [ ] Appium/Playwright: `ejercicios/` — pendiente replicar el mismo patrón de práctica progresiva usado en Selenium y Cypress.
 - [x] Appium: fundamentos completos — "¿Qué es Appium?", instalación/setup del entorno, capabilities, Appium Inspector, locators específicos de mobile, gestos táctiles, y el primer test funcional completo (end-to-end en app de demo con Page Object Model). Pendiente para más adelante: testing cross-platform, Appium + CI/CD, y device farms en la nube.
 - [x] Cypress: fundamentos completos — "¿Qué es Cypress?", instalación/setup, anatomía de un test, selectors, retry-ability, `cy.intercept`, y el primer test funcional completo (end-to-end de login con Page Object Model y fixtures). Pendiente para más adelante: custom commands, Cypress + CI/CD, y Component Testing.
 - [x] Playwright: fundamentos completos — "¿Qué es Playwright?", instalación/setup, anatomía de un test, locators por accesibilidad, auto-waiting, `page.route`, y el primer test funcional completo (end-to-end con Page Object Model, fixtures personalizadas, y ejecución multi-navegador). Pendiente para más adelante: Trace Viewer, Playwright + CI/CD, y testing de componentes.
