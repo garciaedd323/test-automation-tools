@@ -106,7 +106,8 @@ Si ya completaste la Fase 1, este bloque se lee mucho más rápido — Appium re
 ### Fase 6 — CI/CD aplicado
 
 1. [Anatomía de un workflow (GitHub Actions)](./ci-cd/github-actions/github-actions-anatomia.md)
-2. _(se irá completando con Jenkins, GitLab CI, y un pipeline real aplicado a los proyectos ya construidos)_
+2. [Pipeline real aplicado (Selenium + Gradle)](./ci-cd/github-actions/pipeline-selenium-gradle.md) — el mismo tutorial ya construido, ahora corriendo automáticamente en cada push.
+3. _(se irá completando con Jenkins y GitLab CI)_
 
 ---
 
@@ -301,6 +302,7 @@ Retos prácticos con dificultad progresiva, usando las mismas apps reales gratui
 
 ### `ci-cd/github-actions/`
 - [Anatomía de un workflow](./ci-cd/github-actions/github-actions-anatomia.md) — dónde vive el archivo (`.github/workflows/`), el trigger (`on`: push, pull_request, schedule), `jobs`/`runs-on` como máquinas desechables, `steps` con `uses` vs `run`, `strategy.matrix` para correr en paralelo con variaciones, cachear dependencias, `upload-artifact` (incluso en fallos con `if: always()`), y `secrets` para credenciales. Incluye el workflow completo armado pieza por pieza, analogías cotidianas (línea de ensamblaje, caja fuerte separada) y diagrama del flujo.
+- [Pipeline real aplicado (Selenium + Gradle)](./ci-cd/github-actions/pipeline-selenium-gradle.md) — el workflow completo conectado al proyecto real del tutorial: `chmod +x ./gradlew`, modo headless obligatorio en el runner, `if: always()` para generar y subir el reporte incluso si algo falla, retención de artifacts, por qué `aggregate` se hace explícito en CI aunque `build.gradle` ya lo dispare solo, y cómo se ve el resultado desde la pestaña Actions/PR de GitHub. Incluye tabla de errores comunes y diagrama del pipeline aplicado.
 
 ---
 
@@ -312,7 +314,7 @@ Retos prácticos con dificultad progresiva, usando las mismas apps reales gratui
 | [Appium](./appium) | Móvil (Android/iOS) | Java, Python, JS | 🟢 Completo (fundamentos) |
 | [Cypress](./cypress) | Web (navegador) | JavaScript/TypeScript | 🟢 Completo (fundamentos) |
 | [Playwright](./playwright) | Web (navegador, multi-motor) | JS/TS, Python, .NET, Java | 🟢 Completo (fundamentos) |
-| [CI/CD](./ci-cd) | Integración continua | YAML / Groovy | 🟡 En progreso (1 nota agregada) |
+| [CI/CD](./ci-cd) | Integración continua | YAML / Groovy | 🟡 En progreso (2 notas agregadas) |
 
 **Leyenda:** 🟢 Completo · 🟡 En progreso · 🔴 Pendiente
 
@@ -351,7 +353,7 @@ Retos prácticos con dificultad progresiva, usando las mismas apps reales gratui
 - [x] Appium: fundamentos completos — "¿Qué es Appium?", instalación/setup del entorno, capabilities, Appium Inspector, locators específicos de mobile, gestos táctiles, y el primer test funcional completo (end-to-end en app de demo con Page Object Model). Pendiente para más adelante: testing cross-platform, Appium + CI/CD, y device farms en la nube.
 - [x] Cypress: fundamentos completos — "¿Qué es Cypress?", instalación/setup, anatomía de un test, selectors, retry-ability, `cy.intercept`, y el primer test funcional completo (end-to-end de login con Page Object Model y fixtures). Pendiente para más adelante: custom commands, Cypress + CI/CD, y Component Testing.
 - [x] Playwright: fundamentos completos — "¿Qué es Playwright?", instalación/setup, anatomía de un test, locators por accesibilidad, auto-waiting, `page.route`, y el primer test funcional completo (end-to-end con Page Object Model, fixtures personalizadas, y ejecución multi-navegador). Pendiente para más adelante: Trace Viewer, Playwright + CI/CD, y testing de componentes.
-- [ ] CI/CD: primer pipeline con GitHub Actions — "Anatomía de un workflow" agregada (on, jobs, steps, matrix, cache, artifacts, secrets); falta el pipeline real aplicado paso a paso al tutorial de Selenium+Gradle, y luego Jenkins/GitLab CI
+- [ ] CI/CD: primer pipeline con GitHub Actions — "Anatomía de un workflow" y "Pipeline real aplicado (Selenium + Gradle)" agregados (on, jobs, steps, matrix, cache, artifacts, secrets, headless obligatorio, quality gates); falta Jenkins y GitLab CI
 - [ ] `docs/comparativas`: tabla comparativa Selenium vs Playwright vs Cypress — ya existe Selenium vs Cypress; falta ampliar con Playwright
 
 ---
