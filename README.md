@@ -46,6 +46,9 @@ Sigue este orden exacto — cada nota se apoya en la anterior:
 5. [Interacciones con elementos](./selenium/notas/interacciones-elementos-selenium.md)
 6. [Ventanas, pestañas y frames/iframes](./selenium/notas/ventanas-frames-selenium-java.md)
 7. [Alertas de JavaScript](./selenium/notas/alertas-javascript-selenium-java.md)
+
+   📌 **¿Nunca habías usado Page Object Model?** Antes del siguiente paso, lee [Page Object Model para principiantes](./docs/conceptos-generales/pom-para-principiantes.md) — la idea explicada sin código de ninguna herramienta específica.
+
 8. [Page Object Model](./selenium/notas/page-object-model-selenium-java.md) — aquí es donde todo empieza a "hacer clic" (sin juego de palabras)
 9. [Integración con test runner: JUnit 5 vs TestNG](./selenium/notas/test-runner-selenium-java.md)
 10. [Screenshots y evidencias](./selenium/notas/screenshots-evidencias-selenium-java.md)
@@ -205,6 +208,7 @@ graph TD
 - [Pirámide de testing](./docs/conceptos-generales/piramide-de-testing.md) — origen (Mike Cohn), cada capa explicada, errores comunes, variante "testing trophy", ejemplos aplicados (web y móvil).
 - [Tipos de pruebas](./docs/conceptos-generales/tipos-de-pruebas.md) — funcionales vs no funcionales, mapa completo con analogías cotidianas, tabla resumen, relación con la pirámide de testing.
 - [Patrones de diseño](./docs/conceptos-generales/patrones-de-diseno.md) — Page Object Model, Page Factory y Screenplay Pattern, con ejemplos de código, comparación y guía de cuándo elegir cada uno.
+- [Page Object Model para principiantes](./docs/conceptos-generales/pom-para-principiantes.md) — el problema que resuelve explicado sin tecnicismos, la analogía del control remoto universal, un ejemplo completo en Python (el lenguaje más legible, sin depender de ninguna herramienta específica del repo), qué pasa cuando algo cambia en la página, reglas de oro, preguntas frecuentes, y glosario rápido. Pensada como puente antes de ver las versiones técnicas de POM en Selenium/Cypress/Playwright.
 - [Estrategia de automatización](./docs/conceptos-generales/estrategia-de-automatizacion.md) — criterios de priorización, matriz impacto/frecuencia, cálculo de ROI, mantenibilidad y proceso práctico para decidir qué automatizar primero.
 - [Buenas prácticas generales](./docs/conceptos-generales/buenas-practicas-generales.md) — naming de tests, independencia entre pruebas, datos de prueba, cómo evitar flaky tests, esperas explícitas vs. implícitas.
 - [CI/CD — Conceptos generales](./docs/conceptos-generales/cicd-conceptos-generales.md) — qué es Integración Continua, la diferencia entre Continuous Delivery y Continuous Deployment, por qué CI/CD le da sentido real a la automatización de pruebas, anatomía de un pipeline (trigger, stage, job, runner, artifact), quality gates, y cómo se conecta con lo ya visto en el repo (workflows de GitHub Actions generados por Selenium/Playwright, reportes de Allure como artifacts). Incluye analogías cotidianas (línea de ensamblaje de una fábrica de autos) y diagrama del flujo conceptual.

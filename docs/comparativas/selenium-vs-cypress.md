@@ -107,7 +107,7 @@ Selenium existe desde 2004 — dos décadas de comunidad, integraciones, Stack O
 
 ## 11. Diagrama comparativo
 
-![Diagrama comparativo Selenium vs Cypress](../capturas/selenium-vs-cypress-diagrama.svg)
+![Diagrama comparativo Selenium vs Cypress](../../recursos-generales/capturas/selenium-vs-cypress-diagrama.svg)
 
 *(Diagrama ilustrativo: las fortalezas distintivas de cada herramienta, agrupadas bajo "elegir Selenium si..." y "elegir Cypress si...".)*
 
