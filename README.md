@@ -101,6 +101,7 @@ Si ya completaste la Fase 1, este bloque se lee mucho más rápido — Appium re
 6. [Interceptar red con page.route](./playwright/notas/page-route-playwright.md)
 7. 🏁 **Práctica integradora:** [El primer test funcional completo](./playwright/notas/primer-test-playwright.md)
 8. [Debugging real en Playwright — un caso de la vida diaria](./playwright/notas/debugging-real-playwright.md) — caso real de troubleshooting (timeout de locator que en realidad era un problema de idioma), con el proceso de diagnóstico completo, no solo el fix.
+9. [De codegen a tu primer test corriendo](./playwright/tutoriales/de-codegen-a-primer-test.md) — tutorial operativo, paso a paso, sin teoría: la secuencia exacta desde abrir `codegen` hasta correr el test y leer el reporte si falla.
 
 **🎯 Ahora practica por tu cuenta:** [4 ejercicios progresivos](./playwright/ejercicios/) (básico → avanzado) — varios reutilizan el mismo escenario que ya resolviste en Selenium/Cypress, para comparar la sintaxis directamente.
 
@@ -303,6 +304,9 @@ Retos prácticos con dificultad progresiva, usando apps reales gratuitas ([the-i
 - [El primer test funcional completo](./playwright/notas/primer-test-playwright.md) — flujo end-to-end real de login: fixture `page` aislada, Page Object con `getByRole`, `Promise.all` combinando clic y `waitForResponse` en la misma expresión, fixtures personalizadas para evitar repetir el login, y ejecución automática multi-navegador (Chromium, Firefox, WebKit) sin duplicar código. Incluye analogías cotidianas (misma obra en tres teatros la misma noche) y diagrama del flujo completo.
 - [Debugging real en Playwright — un caso de la vida diaria](./playwright/notas/debugging-real-playwright.md) — caso real: un timeout de `getByRole` que parecía un problema de locator o de red, resuelto leyendo el `page snapshot` del reporte hasta encontrar que la causa era el idioma del navegador (`locale` no fijado en el config). Incluye el proceso completo de descarte de hipótesis (VPN, proxy, certificado, firewall), un checklist de diagnóstico reutilizable para cualquier timeout de locator, y diagrama del flujo de debugging.
 
+### `playwright/tutoriales/`
+- [De codegen a tu primer test corriendo](./playwright/tutoriales/de-codegen-a-primer-test.md) — recorrido operativo paso a paso, sin teoría adicional: abrir `codegen`, interactuar con la página, usar el Pick Locator, grabar también la aserción (el paso que más se olvida), copiar el código generado, envolverlo en la estructura de un test real, guardarlo en `tests/`, y correrlo con sus variantes (`--headed`, `--debug`, `--ui`). Incluye diagrama de flujo en texto y checklist final para no saltarse ningún paso.
+
 ### `playwright/ejercicios/` 🎯
 Retos prácticos con dificultad progresiva, usando las mismas apps reales gratuitas ya conocidas ([the-internet.herokuapp.com](https://the-internet.herokuapp.com), [example.cypress.io](https://example.cypress.io), [saucedemo.com](https://www.saucedemo.com)). Varios ejercicios reutilizan el mismo escenario que Selenium/Cypress a propósito, para comparar directamente cómo cambia (o no) la sintaxis entre herramientas.
 
@@ -374,6 +378,7 @@ Retos prácticos con dificultad progresiva, usando las mismas apps reales gratui
 - [x] Cypress: fundamentos completos — "¿Qué es Cypress?", instalación/setup, anatomía de un test, selectors, retry-ability, `cy.intercept`, y el primer test funcional completo (end-to-end de login con Page Object Model y fixtures). Pendiente para más adelante: custom commands, Cypress + CI/CD, y Component Testing.
 - [x] Playwright: fundamentos completos — "¿Qué es Playwright?", instalación/setup, anatomía de un test, locators por accesibilidad, auto-waiting, `page.route`, y el primer test funcional completo (end-to-end con Page Object Model, fixtures personalizadas, y ejecución multi-navegador). Pendiente para más adelante: Trace Viewer, Playwright + CI/CD, y testing de componentes.
 - [x] Playwright: `notas/debugging-real-playwright.md` agregada — caso real de troubleshooting (timeout de locator causado por idioma del navegador, no por el locator en sí), con checklist de diagnóstico reutilizable. Cubre parcialmente el pendiente de debugging; Trace Viewer sigue pendiente como nota dedicada.
+- [x] Playwright: `tutoriales/` — primer tutorial agregado (de `codegen` a primer test corriendo), cerrando el hueco que quedaba entre las notas conceptuales y la práctica operativa.
 - [x] CI/CD completo — GitHub Actions ("Anatomía de un workflow" + "Pipeline real aplicado"), Jenkins ("Conceptos y tu primer pipeline"), y GitLab CI ("Conceptos y tu primer pipeline"), con tabla de equivalencias a tres bandas entre las tres herramientas.
 - [x] `docs/comparativas` completo — Selenium vs Cypress, y la comparativa final a 4 bandas (Selenium/Appium/Cypress/Playwright) con tabla de decisión ampliada.
 
